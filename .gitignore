@@ -1,0 +1,8 @@
+.venv/
+datasets/
+checkpoints/
+logs/
+results/
+research/reports/
+__pycache__/
+*.pyc
