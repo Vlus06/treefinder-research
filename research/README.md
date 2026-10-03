@@ -1,0 +1,45 @@
+# TreeFinder research experiments
+
+This folder adds site-disjoint evaluation and a small-label transfer experiment to the [official TreeFinder code](https://github.com/zhwang0/treefinder). The original code and CC BY 4.0 attribution are retained. The raw TreeFinder dataset is distributed separately by its authors on [Hugging Face](https://huggingface.co/datasets/zhwang1/TreeFinder).
+
+## Research question
+
+When a dead-tree segmenter is moved to a previously unseen region, which target sites should be labeled first to maximize detection performance per labeled site? The `active_transfer.py` experiment compares random selection, prediction uncertainty, spectral diversity, and a 50/50 combination. Every strategy starts from the same source checkpoint and receives the same number of labeled target sites. Target test masks are used only for final evaluation.
+
+The acquisition score uses the model's top 1% most uncertain valid pixels from up to four tiles per site. Spectral diversity uses site means and standard deviations of RGB, NIR, and NDVI. These are **initial hypotheses**, not established improvements.
+
+## Kaggle T4
+
+Create a Kaggle notebook with **GPU T4** and **Internet on**, then run:
+
+```bash
+!git clone https://github.com/Vlus06/treefinder-research.git
+%cd /kaggle/working/treefinder-research
+!bash research/setup_kaggle.sh
+!python research/train_baseline.py --epochs 15 --batch-size 8
+!python research/active_transfer.py --direction west_to_east --budgets 5 10 20 --batch-size 8
+!python research/active_transfer.py --direction east_to_west --budgets 5 10 20 --batch-size 8
+```
+
+Download `research/reports/` from the Kaggle notebook's output files after execution. The download is about 2 GB compressed; extraction needs roughly 4 GB more. `setup_kaggle.sh` downloads only the three dataset files required for these experiments and ignores macOS metadata in the ZIP.
+
+For a quick pipeline check before the full run:
+
+```bash
+!python research/train_baseline.py --smoke
+!python research/active_transfer.py --smoke --budgets 1 --max-score-tiles 1
+```
+
+Smoke metrics are **not scientific results**: they come from one epoch and deliberately small, label-stratified samples.
+
+## Data and split audit
+
+The official random loader defaults to shuffling individual `FileName` tiles. Its test set can therefore contain tiles from source images also seen in train/validation. `make_site_split.py` groups by `ImageRawPath`, stratifies sites by state and presence of positives, then emits a 70/10/20 train/validation/test split. It also writes `research/reports/split_audit.json`, which reproduces the official random loader's site overlap for seed 2025. This audit proves overlap, not the magnitude of its effect on model scores.
+
+`make_transfer_split.py` creates east-to-west and west-to-east experiments using the state groups in the authors' configuration. Within each direction, the source gets disjoint train/validation sites and the target gets disjoint acquisition-pool/test sites. The site manifests are committed for reproducibility.
+
+The baseline is a deliberately small U-Net (`[16, 32, 64]` channels) with five inputs (RGB, NIR, computed NDVI), masked BCE plus Dice loss, and global positive-class pixel metrics. This is not numerically identical to the larger U-Net in the paper. The no-data mask is applied to *both* prediction and target terms in Dice loss. Reports include test confusion counts for later site-level bootstrap intervals.
+
+## Reporting before submission
+
+Run at least three seeds for full claims; the current scripts fix seed 2025 and are a first reproducible experiment. Compare each method at the same number of labeled sites **and** report labeled tile counts, because sites differ in size. Add site-bootstrap confidence intervals and inspect false positives per valid hectare before making deployment claims. Pixel F1 is not instance F1; TreeFinder's raster masks can merge neighboring crowns.
