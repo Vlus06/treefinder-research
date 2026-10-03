@@ -6,6 +6,7 @@ Run: python research/make_site_split.py
 from __future__ import annotations
 
 import json
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -14,9 +15,6 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "datasets" / "tile_info224_v3_aux.csv"
-OUT = ROOT / "research" / "splits" / "site_seed2025.csv"
-AUDIT = ROOT / "research" / "reports" / "split_audit.json"
-SEED = 2025
 
 
 def counts(frame: pd.DataFrame) -> dict:
@@ -30,6 +28,12 @@ def counts(frame: pd.DataFrame) -> dict:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--seed", type=int, default=2025)
+    args = parser.parse_args()
+    seed = args.seed
+    out_path = ROOT / "research" / "splits" / f"site_seed{seed}.csv"
+    audit_path = ROOT / "research" / "reports" / f"split_audit_seed{seed}.json"
     df = pd.read_csv(DATA)
     assert df.FileName.is_unique
     assert df.ImageRawPath.notna().all()
@@ -43,7 +47,7 @@ def main() -> None:
         State=("State", "first"), positive_pixels=("LabelSize", "sum")
     )
     sites["has_positive"] = sites.positive_pixels.gt(0)
-    rng = np.random.default_rng(SEED)
+    rng = np.random.default_rng(seed)
     assignment = {}
     for _, group in sites.groupby(["State", "has_positive"], sort=True):
         names = group.ImageRawPath.to_numpy().copy()
@@ -70,12 +74,12 @@ def main() -> None:
     assert not (split_sites["train"] & split_sites["test"])
     assert not (split_sites["val"] & split_sites["test"])
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    AUDIT.parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(OUT, index=False)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    audit_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(out_path, index=False)
 
     # Reproduce the public random_split.py's default tile-level shuffling.
-    old_rng = np.random.RandomState(SEED)
+    old_rng = np.random.RandomState(seed)
     tiles = df.FileName.unique().tolist()
     old_rng.shuffle(tiles)
     n_test = int(0.2 * len(tiles))
@@ -89,7 +93,7 @@ def main() -> None:
     overlap = old_site_sets["trainval"] & old_site_sets["test"]
 
     report = {
-        "seed": SEED,
+        "seed": seed,
         "dataset": counts(df),
         "site_disjoint": {s: counts(df[df.split == s]) for s in ["train", "val", "test"]},
         "original_tile_random_test_site_overlap": {
@@ -100,7 +104,7 @@ def main() -> None:
             "total_test_tiles": n_test,
         },
     }
-    AUDIT.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    audit_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps(report, indent=2))
 
 
