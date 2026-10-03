@@ -20,6 +20,8 @@ done
 sha256sum -c research/dataset.sha256
 
 python research/extract_tiles.py
-python research/make_site_split.py
-python research/make_transfer_split.py
+for seed in ${TREEFINDER_SEEDS:-2025}; do
+  python research/make_site_split.py --seed "$seed"
+  python research/make_transfer_split.py --seed "$seed"
+done
 python -c 'import torch; print("torch", torch.__version__, "CUDA", torch.cuda.is_available(), "GPU", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "none")'

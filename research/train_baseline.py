@@ -59,7 +59,7 @@ def masked_loss(logits: torch.Tensor, labels: torch.Tensor, valid: torch.Tensor)
     return bce + dice
 
 
-def evaluate(model, loader, device):
+def evaluate(model, loader, device, threshold=0.5):
     model.eval()
     loss_sum = 0.0
     totals = {"tp": 0, "fp": 0, "fn": 0}
@@ -69,7 +69,7 @@ def evaluate(model, loader, device):
             images, labels, valid = images.to(device), labels.to(device), valid.to(device)
             logits = model(images)
             loss_sum += masked_loss(logits, labels, valid).item()
-            pred = (logits.sigmoid() >= 0.5) & valid.bool()
+            pred = (logits.sigmoid() >= threshold) & valid.bool()
             truth = labels.bool() & valid.bool()
             for i, path in enumerate(paths):
                 row = by_site.setdefault(path, {"tp": 0, "fp": 0, "fn": 0})
@@ -91,9 +91,31 @@ def evaluate(model, loader, device):
     return metrics, by_site
 
 
-def smoke_subset(frame: pd.DataFrame, split: str) -> pd.DataFrame:
+def calibrate_threshold(model, loader, device, bins=100):
+    """Choose a threshold on labeled validation data, never on target test data."""
+    model.eval()
+    positive = np.zeros(bins, dtype=np.int64)
+    negative = np.zeros(bins, dtype=np.int64)
+    with torch.no_grad():
+        for images, labels, valid, _ in loader:
+            scores = model(images.to(device)).sigmoid()
+            truth = labels.to(device).bool()
+            mask = valid.to(device).bool()
+            positive += torch.histc(scores[mask & truth], bins=bins, min=0, max=1).cpu().numpy().astype(np.int64)
+            negative += torch.histc(scores[mask & ~truth], bins=bins, min=0, max=1).cpu().numpy().astype(np.int64)
+    tp = np.cumsum(positive[::-1])
+    fp = np.cumsum(negative[::-1])
+    fn = positive.sum() - tp
+    f1 = 2 * tp / np.maximum(1, 2 * tp + fp + fn)
+    # Restrict away from 0 and 1 to avoid degenerate thresholds.
+    candidate = np.arange(4, bins - 5)
+    best = int(candidate[np.argmax(f1[candidate])])
+    return {"threshold": (bins - 1 - best) / bins, "validation_f1": float(f1[best])}
+
+
+def smoke_subset(frame: pd.DataFrame, split: str, seed: int) -> pd.DataFrame:
     # This subset only checks whether training and evaluation run end to end.
-    rng = np.random.default_rng(2025)
+    rng = np.random.default_rng(seed)
     per_class = 64 if split == "train" else 16
     return pd.concat([
         group.sample(n=min(per_class, len(group)), random_state=int(rng.integers(2**31)))
@@ -108,20 +130,21 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=4)
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--threads", type=int, default=4)
+    parser.add_argument("--seed", type=int, default=2025)
     args = parser.parse_args()
     assert args.epochs > 0 and args.batch_size > 0
-    random.seed(2025)
-    np.random.seed(2025)
-    torch.manual_seed(2025)
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
     torch.set_num_threads(args.threads)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    manifest = pd.read_csv(ROOT / "research" / "splits" / "site_seed2025.csv")
+    manifest = pd.read_csv(ROOT / "research" / "splits" / f"site_seed{args.seed}.csv")
     loaders = {}
     for split in ("train", "val", "test"):
         frame = manifest[manifest.split == split]
         if args.smoke:
-            frame = smoke_subset(frame, split)
+            frame = smoke_subset(frame, split, args.seed)
         loaders[split] = DataLoader(
             TileDataset(frame, augment=(split == "train")),
             batch_size=args.batch_size,
@@ -131,7 +154,7 @@ def main() -> None:
 
     model = UNet(in_channels=5, num_classes=1, features=[16, 32, 64]).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
-    output = ROOT / "research" / "reports" / ("smoke_unet" if args.smoke else "site_unet")
+    output = ROOT / "research" / "reports" / ("smoke_unet" if args.smoke else "site_unet") / f"seed{args.seed}"
     output.mkdir(parents=True, exist_ok=True)
     best = float("inf")
     history = []
@@ -155,15 +178,22 @@ def main() -> None:
 
     model.load_state_dict(torch.load(output / "best.pt", map_location=device, weights_only=True))
     test, by_site = evaluate(model, loaders["test"], device)
+    calibrated = calibrate_threshold(model, loaders["val"], device)
+    calibrated_test, _ = evaluate(model, loaders["test"], device, calibrated["threshold"])
     report = {
         "smoke_only": args.smoke,
-        "seed": 2025,
+        "seed": args.seed,
+        "epochs": 1 if args.smoke else args.epochs,
+        "batch_size": args.batch_size,
+        "learning_rate": args.lr,
         "device": str(device),
         "model": "UNet features=[16,32,64], RGB+NIR+NDVI",
-        "split": "site_seed2025",
+        "split": f"site_seed{args.seed}",
         "counts": {s: len(loader.dataset) for s, loader in loaders.items()},
         "history": history,
         "test": test,
+        "source_validation_threshold": calibrated,
+        "test_at_source_validation_threshold": calibrated_test,
     }
     (output / "metrics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     pd.DataFrame.from_dict(by_site, orient="index").rename_axis("ImageRawPath").to_csv(output / "test_by_site.csv")

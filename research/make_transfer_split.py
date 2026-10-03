@@ -1,5 +1,6 @@
 """Prepare site-disjoint East/West source and target pools for active transfer."""
 
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -13,6 +14,9 @@ EAST = set("AL CT DE FL GA IL IN KY MA MD ME MI MS NC NH NJ NY OH PA RI SC TN VA
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--seed", type=int, default=2025)
+    args = parser.parse_args()
     df = pd.read_csv(SOURCE)
     assert set(df.State) == WEST | EAST
     sites = df.groupby("ImageRawPath", as_index=False).agg(
@@ -20,7 +24,7 @@ def main() -> None:
     )
     sites["has_positive"] = sites.positive_pixels.gt(0)
     for direction, source_states in (("west_to_east", WEST), ("east_to_west", EAST)):
-        rng = np.random.default_rng(2025)
+        rng = np.random.default_rng(args.seed)
         assignment = {}
         for _, group in sites.groupby(["State", "has_positive"], sort=True):
             names = group.ImageRawPath.to_numpy().copy()
@@ -42,7 +46,7 @@ def main() -> None:
         out["split"] = out.ImageRawPath.map(assignment)
         assert out.split.notna().all()
         assert out.groupby("ImageRawPath").split.nunique().eq(1).all()
-        target = ROOT / "research" / "splits" / f"{direction}_seed2025.csv"
+        target = ROOT / "research" / "splits" / f"{direction}_seed{args.seed}.csv"
         target.parent.mkdir(parents=True, exist_ok=True)
         out.to_csv(target, index=False)
         print(direction, out.groupby("split").agg(tiles=("FileName", "size"), sites=("ImageRawPath", "nunique")).to_dict("index"))
