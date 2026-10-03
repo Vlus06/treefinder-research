@@ -156,7 +156,9 @@ def main() -> None:
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
     output = ROOT / "research" / "reports" / ("smoke_unet" if args.smoke else "site_unet") / f"seed{args.seed}"
     output.mkdir(parents=True, exist_ok=True)
-    best = float("inf")
+    best_f1 = -1.0
+    best_loss = float("inf")
+    best_epoch = None
     history = []
     for epoch in range(1, (1 if args.smoke else args.epochs) + 1):
         model.train()
@@ -172,11 +174,12 @@ def main() -> None:
         row = {"epoch": epoch, "train_loss": train_loss / len(loaders["train"]), "val": val}
         history.append(row)
         print(json.dumps(row), flush=True)
-        if val["loss"] < best:
-            best = val["loss"]
-            torch.save(model.state_dict(), output / "best.pt")
+        if (val["f1"] > best_f1 or
+                (val["f1"] == best_f1 and val["loss"] < best_loss)):
+            best_f1, best_loss, best_epoch = val["f1"], val["loss"], epoch
+            torch.save(model.state_dict(), output / "best_f1.pt")
 
-    model.load_state_dict(torch.load(output / "best.pt", map_location=device, weights_only=True))
+    model.load_state_dict(torch.load(output / "best_f1.pt", map_location=device, weights_only=True))
     test, by_site = evaluate(model, loaders["test"], device)
     calibrated = calibrate_threshold(model, loaders["val"], device)
     calibrated_test, _ = evaluate(model, loaders["test"], device, calibrated["threshold"])
@@ -191,6 +194,7 @@ def main() -> None:
         "split": f"site_seed{args.seed}",
         "counts": {s: len(loader.dataset) for s, loader in loaders.items()},
         "history": history,
+        "checkpoint_selection": {"metric": "source_validation_f1_at_0.5", "epoch": best_epoch, "f1": best_f1},
         "test": test,
         "source_validation_threshold": calibrated,
         "test_at_source_validation_threshold": calibrated_test,

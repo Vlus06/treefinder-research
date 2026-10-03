@@ -8,7 +8,6 @@ from __future__ import annotations
 import argparse
 import json
 import random
-import shutil
 from pathlib import Path
 
 import numpy as np
@@ -33,7 +32,8 @@ def make_loader(frame: pd.DataFrame, batch_size: int, augment: bool = False, shu
 def train_epochs(model, frame, device, epochs, batch_size, lr, validation=None, checkpoint=None, replay_source=None, seed=2025):
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01)
     losses = []
-    best_val = float("inf")
+    best_f1 = -1.0
+    best_loss = float("inf")
     for epoch in range(epochs):
         epoch_frame = frame
         if replay_source is not None:
@@ -53,9 +53,10 @@ def train_epochs(model, frame, device, epochs, batch_size, lr, validation=None, 
         print(f"epoch {epoch + 1}/{epochs}: loss={losses[-1]:.5f}", flush=True)
         if validation is not None:
             val, _ = evaluate(model, validation, device)
-            print(f"source validation loss={val['loss']:.5f}", flush=True)
-            if val["loss"] < best_val:
-                best_val = val["loss"]
+            print(f"source validation loss={val['loss']:.5f} f1={val['f1']:.5f}", flush=True)
+            if (val["f1"] > best_f1 or
+                    (val["f1"] == best_f1 and val["loss"] < best_loss)):
+                best_f1, best_loss = val["f1"], val["loss"]
                 torch.save(model.state_dict(), checkpoint)
     if checkpoint is not None:
         model.load_state_dict(torch.load(checkpoint, map_location=device, weights_only=True))
@@ -158,11 +159,7 @@ def main() -> None:
     output_root = ROOT / "research" / "reports" / ("smoke_active" if args.smoke else "active_transfer") / args.direction
     output = output_root / f"seed{args.seed}"
     output.mkdir(parents=True, exist_ok=True)
-    source_path = output / "source_model.pt"
-    # Reuse the already trained source model from the first Kaggle run when possible.
-    legacy_source = output_root / "source_model.pt"
-    if args.seed == 2025 and legacy_source.exists() and not source_path.exists() and not args.retrain_source and not args.smoke:
-        shutil.copy2(legacy_source, source_path)
+    source_path = output / "source_model_f1.pt"
     base = UNet(5, 1, [16, 32, 64]).to(device)
     source_val_loader = make_loader(source_val, args.batch_size)
     if source_path.exists() and not args.smoke and not args.retrain_source:
@@ -178,10 +175,7 @@ def main() -> None:
     pd.DataFrame.from_dict(source_calibrated_by_site, orient="index").rename_axis("ImageRawPath").to_csv(output / "zero_shot_calibrated_by_site.csv")
     print("zero_shot", json.dumps(source_metrics), flush=True)
 
-    score_file = output / "pool_scores.json"
-    legacy_scores = output_root / "pool_scores.json"
-    if args.seed == 2025 and args.max_score_tiles == 4 and legacy_scores.exists() and not score_file.exists() and not args.retrain_source and not args.smoke:
-        shutil.copy2(legacy_scores, score_file)
+    score_file = output / "pool_scores_f1.json"
     if score_file.exists() and not args.smoke and not args.retrain_source:
         rows = json.loads(score_file.read_text(encoding="utf-8"))
     else:
@@ -230,6 +224,7 @@ def main() -> None:
                 "fine_tuning_mode": mode,
                 "tiles_per_site": args.tiles_per_site,
                 "source_epochs": args.source_epochs,
+                "source_checkpoint_selection": "source_validation_f1_at_0.5",
                 "finetune_epochs": args.finetune_epochs,
                 "batch_size": args.batch_size,
                 "max_score_tiles": args.max_score_tiles,
