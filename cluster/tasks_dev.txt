@@ -1,0 +1,54 @@
+--protocol site --model unet_r34 --seed 2025 --recipe paper --tag dev_base
+--protocol site --model unet_r34 --seed 2026 --recipe paper --tag dev_base
+--protocol site --model unet_r34 --seed 2027 --recipe paper --tag dev_base
+--protocol w2e --model unet_r34 --seed 2025 --recipe paper --tag dev_base
+--protocol w2e --model unet_r34 --seed 2026 --recipe paper --tag dev_base
+--protocol w2e --model unet_r34 --seed 2027 --recipe paper --tag dev_base
+--protocol e2w --model unet_r34 --seed 2025 --recipe paper --tag dev_base
+--protocol e2w --model unet_r34 --seed 2026 --recipe paper --tag dev_base
+--protocol e2w --model unet_r34 --seed 2027 --recipe paper --tag dev_base
+--protocol site --model unet_r34 --seed 2025 --recipe paper --tag dev_photo --photo-aug
+--protocol site --model unet_r34 --seed 2026 --recipe paper --tag dev_photo --photo-aug
+--protocol site --model unet_r34 --seed 2027 --recipe paper --tag dev_photo --photo-aug
+--protocol w2e --model unet_r34 --seed 2025 --recipe paper --tag dev_photo --photo-aug
+--protocol w2e --model unet_r34 --seed 2026 --recipe paper --tag dev_photo --photo-aug
+--protocol w2e --model unet_r34 --seed 2027 --recipe paper --tag dev_photo --photo-aug
+--protocol e2w --model unet_r34 --seed 2025 --recipe paper --tag dev_photo --photo-aug
+--protocol e2w --model unet_r34 --seed 2026 --recipe paper --tag dev_photo --photo-aug
+--protocol e2w --model unet_r34 --seed 2027 --recipe paper --tag dev_photo --photo-aug
+--protocol site --model unet_r34 --seed 2025 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2026 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2027 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2025 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2026 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2027 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2025 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2026 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2027 --recipe paper --tag dev_ftv --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2025 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2026 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2027 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2025 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2026 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2027 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2025 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2026 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2027 --recipe paper --tag dev_photo_ftv --photo-aug --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2025 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2026 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2027 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2025 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2026 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2027 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2025 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2026 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2027 --recipe paper --tag dev_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2025 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2026 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol site --model unet_r34 --seed 2027 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2025 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2026 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol w2e --model unet_r34 --seed 2027 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2025 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2026 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol e2w --model unet_r34 --seed 2027 --recipe paper --tag dev_aux_photo_ftv --aux --photo-aug --loss bce_ftversky

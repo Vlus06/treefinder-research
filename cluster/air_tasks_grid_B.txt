@@ -1,0 +1,12 @@
+res_random.yaml m_cnx2t_fpn none 2024 9709 --tag grid
+res_random.yaml m_cnx2t_unet none 2024 9710 --tag grid
+res_random.yaml m_cnx2t_dlv3p none 2024 9711 --tag grid
+res_random.yaml m_cnx2b_fpn none 2024 9712 --tag grid
+res_random.yaml m_cnx2b_unet none 2024 9713 --tag grid
+res_random.yaml m_cnx2b_dlv3p none 2024 9714 --tag grid
+res_random.yaml m_r50_fpn none 2024 9715 --tag grid
+res_random.yaml m_r50_unet none 2024 9716 --tag grid
+res_random.yaml m_r50_dlv3p none 2024 9717 --tag grid
+res_random.yaml m_regy4_fpn none 2024 9718 --tag grid
+res_random.yaml m_regy4_unet none 2024 9719 --tag grid
+res_random.yaml m_regy4_dlv3p none 2024 9720 --tag grid

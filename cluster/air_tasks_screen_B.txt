@@ -1,0 +1,6 @@
+res_random.yaml convnext_upernet none 2025 9004 --tag ema --ema 0.999
+res_random.yaml convnext_upernet none 2025 9005 --tag ftv --loss bce_ftversky
+res_random.yaml convnext_upernet none 1 9006 --tag noise1 --split_seed 2025
+res_random.yaml convnext_upernet none 2 9007 --tag noise2 --split_seed 2025
+res_random.yaml treemortseg none 1 9008 --tag noise1 --split_seed 2025
+res_random.yaml treemortseg none 2 9009 --tag noise2 --split_seed 2025

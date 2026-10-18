@@ -1,0 +1,8 @@
+--protocol official:random --model official_segformer3 --seed 2025 --recipe paper --tag paper
+--protocol official:w2e --model official_segformer3 --seed 2025 --recipe paper --tag paper
+--protocol official:e2w --model official_segformer3 --seed 2025 --recipe paper --tag paper
+--protocol official:co --model official_segformer3 --seed 2025 --recipe paper --tag paper
+--protocol official:climate --model official_segformer3 --seed 2025 --recipe paper --tag paper
+--protocol official:climate_hard --model official_segformer3 --seed 2025 --recipe paper --tag paper
+--protocol official:forest --model official_segformer3 --seed 2025 --recipe paper --tag paper
+--protocol official:forest_hard --model official_segformer3 --seed 2025 --recipe paper --tag paper

@@ -1,0 +1,5 @@
+res_random_site.yaml segformer_b5 none 2025 9100 --epochs 1 --max_samples 128 --tag smoke
+res_random_site.yaml upernet_swin_s none 2025 9101 --epochs 1 --max_samples 128 --tag smoke
+res_random_site.yaml effunet_b7 none 2025 9102 --epochs 1 --max_samples 128 --tag smoke
+res_random_site.yaml dinov2_b none 2025 9103 --epochs 1 --max_samples 128 --tag smoke --lr_backbone_mult 0.1
+res_random_site.yaml hrnet_w32 none 2025 9104 --epochs 1 --max_samples 128 --tag smoke

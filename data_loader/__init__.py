@@ -12,6 +12,8 @@ def get_dataloader(cfg: dict):
         from .by_climate_split import ClimateSplitDataset as DS
     elif method == "by_tree_type":
         from .by_tree_split import TreeSplitDataset as DS
+    elif method == "by_site":  # additive: site-disjoint random split
+        from .site_split import SiteSplitDataset as DS
     else:
         raise ValueError(f"Unknown split method: {method}")
 

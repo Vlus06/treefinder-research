@@ -1,0 +1,7 @@
+res_random.yaml convnext_upernet none 2025 7967 --tag smoke_C --split_seed 2025 --max_samples 64 --epochs 1 --workers 2 --copypaste 0.5 --gate 0.3
+res_random.yaml convnext_upernet none 2025 9819 --tag cp --split_seed 2025 --copypaste 0.5
+res_random.yaml convnext_upernet none 2025 9822 --tag gate --split_seed 2025 --gate 0.3
+res_random.yaml convnext_upernet none 1 9820 --tag cp --split_seed 2025 --copypaste 0.5
+res_random.yaml convnext_upernet none 1 9823 --tag gate --split_seed 2025 --gate 0.3
+res_random.yaml convnext_upernet none 2 9821 --tag cp --split_seed 2025 --copypaste 0.5
+res_random.yaml convnext_upernet none 2 9824 --tag gate --split_seed 2025 --gate 0.3

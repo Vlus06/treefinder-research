@@ -1,0 +1,8 @@
+res_random.yaml m_cnxs_upernet none 2024 9701 --tag grid
+res_random.yaml m_cnxs_fpn none 2024 9702 --tag grid
+res_random.yaml m_cnxs_unet none 2024 9703 --tag grid
+res_random.yaml m_cnxs_dlv3p none 2024 9704 --tag grid
+res_random.yaml m_cnx2t_upernet none 2024 9705 --tag grid
+res_random.yaml m_cnx2b_upernet none 2024 9706 --tag grid
+res_random.yaml m_r50_upernet none 2024 9707 --tag grid
+res_random.yaml m_regy4_upernet none 2024 9708 --tag grid

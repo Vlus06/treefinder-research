@@ -1,0 +1,10 @@
+code_site res_random_site.yaml 3500 unet 2025
+code_site res_random_site.yaml 3500 deeplabv3 2025
+code_site res_random_site.yaml 3501 unet 2024
+code_head res_random.yaml 3001 unet 2024
+code_site res_random_site.yaml 3501 deeplabv3 2024
+code_head res_random.yaml 3001 deeplabv3 2024
+code_site res_random_site.yaml 3502 unet 2023
+code_head res_random.yaml 3002 unet 2023
+code_site res_random_site.yaml 3502 deeplabv3 2023
+code_head res_random.yaml 3002 deeplabv3 2023

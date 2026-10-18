@@ -1,0 +1,8 @@
+res_random_site.yaml convnext_upernet none 2025 7001 --tag norm --norm tile
+res_random_site.yaml convnext_upernet none 2025 7002 --tag norm_photo --norm tile --photo
+res_random_site.yaml convnext_upernet none 2025 7003 --tag grp_vrex --sampler site --vrex 1.0
+res_random_site.yaml convnext_upernet none 2025 7004 --tag ema --ema 0.999
+res_random_site.yaml convnext_upernet none 2025 7005 --tag tta --tta
+res_random_site.yaml convnext_upernet none 2025 7006 --tag full --norm tile --photo --sampler site --vrex 1.0 --ema 0.999 --tta
+res_random.yaml convnext_upernet none 2025 7007 --tag norm_photo --norm tile --photo
+res_random.yaml convnext_upernet none 2025 7008 --tag full --norm tile --photo --sampler site --vrex 1.0 --ema 0.999 --tta

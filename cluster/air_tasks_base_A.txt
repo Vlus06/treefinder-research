@@ -1,0 +1,12 @@
+res_random_site.yaml segformer_b5 none 2025 8001 --tag base
+res_random_site.yaml segformer_b5 none 2024 8002 --tag base
+res_random_site.yaml segformer_b5 none 2023 8003 --tag base
+res_random.yaml segformer_b5 none 2025 8004 --tag base
+res_random.yaml segformer_b5 none 2024 8005 --tag base
+res_random.yaml segformer_b5 none 2023 8006 --tag base
+res_random_site.yaml hrnet_w32 none 2025 8007 --tag base
+res_random_site.yaml hrnet_w32 none 2024 8008 --tag base
+res_random_site.yaml hrnet_w32 none 2023 8009 --tag base
+res_random.yaml hrnet_w32 none 2025 8010 --tag base
+res_random.yaml hrnet_w32 none 2024 8011 --tag base
+res_random.yaml hrnet_w32 none 2023 8012 --tag base

@@ -1,0 +1,12 @@
+--protocol official:random --model official_unet --seed 2025 --recipe paper --tag ctrl
+--protocol site --model official_unet --seed 2025 --recipe paper --tag ctrl
+--protocol official:random --model official_deeplab --seed 2025 --recipe paper --tag ctrl
+--protocol site --model official_deeplab --seed 2025 --recipe paper --tag ctrl
+--protocol official:random --model official_unet --seed 2026 --recipe paper --tag ctrl
+--protocol site --model official_unet --seed 2026 --recipe paper --tag ctrl
+--protocol official:random --model official_deeplab --seed 2026 --recipe paper --tag ctrl
+--protocol site --model official_deeplab --seed 2026 --recipe paper --tag ctrl
+--protocol official:random --model official_unet --seed 2027 --recipe paper --tag ctrl
+--protocol site --model official_unet --seed 2027 --recipe paper --tag ctrl
+--protocol official:random --model official_deeplab --seed 2027 --recipe paper --tag ctrl
+--protocol site --model official_deeplab --seed 2027 --recipe paper --tag ctrl

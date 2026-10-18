@@ -1,0 +1,12 @@
+res_random_site.yaml convnext_upernet none 2025 6001
+res_random_site.yaml treemortseg none 2025 6002
+res_random_site.yaml treemortseg released 2025 6003
+res_random_site.yaml treemortseg fixed 2025 6004
+res_random_site.yaml unet none 2025 6005
+res_random_site.yaml deeplabv3 none 2025 6006
+res_random.yaml convnext_upernet none 2025 6007
+res_random.yaml treemortseg none 2025 6008
+res_random.yaml treemortseg released 2025 6009
+res_random.yaml treemortseg fixed 2025 6010
+res_random.yaml unet none 2025 6011
+res_random.yaml deeplabv3 none 2025 6012

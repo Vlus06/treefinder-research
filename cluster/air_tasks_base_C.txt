@@ -1,0 +1,6 @@
+res_random_site.yaml dinov2_b none 2025 8025 --tag base --lr_backbone_mult 0.1
+res_random_site.yaml dinov2_b none 2024 8026 --tag base --lr_backbone_mult 0.1
+res_random_site.yaml dinov2_b none 2023 8027 --tag base --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 2025 8028 --tag base --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 2024 8029 --tag base --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 2023 8030 --tag base --lr_backbone_mult 0.1
