@@ -1,0 +1,8 @@
+code_head res_treetype3.yaml 3420 unet 2025
+code_head res_treetype3.yaml 3420 deeplabv3 2025
+code_head res_treetype1.yaml 3400 unet 2025
+code_head res_treetype1.yaml 3400 deeplabv3 2025
+code_head res_climate3.yaml 3320 unet 2025
+code_head res_climate3.yaml 3320 deeplabv3 2025
+code_head res_climate1.yaml 3300 unet 2025
+code_head res_climate1.yaml 3300 deeplabv3 2025

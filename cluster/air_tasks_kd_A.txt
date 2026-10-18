@@ -1,0 +1,10 @@
+res_random.yaml convnext_upernet none 2025 7965 --tag smoke_A --split_seed 2025 --max_samples 64 --epochs 1 --workers 2 --dino_align 0.5 --ema 0.99 --selfdistill 0.5 --photo
+res_random.yaml convnext_upernet none 2025 9801 --tag d1a05 --split_seed 2025 --dino_align 0.5
+res_random.yaml convnext_upernet none 2025 9804 --tag d1a10 --split_seed 2025 --dino_align 1.0
+res_random.yaml convnext_upernet none 2025 9816 --tag d3 --split_seed 2025 --ema 0.999 --selfdistill 0.5 --photo
+res_random.yaml convnext_upernet none 1 9802 --tag d1a05 --split_seed 2025 --dino_align 0.5
+res_random.yaml convnext_upernet none 1 9805 --tag d1a10 --split_seed 2025 --dino_align 1.0
+res_random.yaml convnext_upernet none 1 9817 --tag d3 --split_seed 2025 --ema 0.999 --selfdistill 0.5 --photo
+res_random.yaml convnext_upernet none 2 9803 --tag d1a05 --split_seed 2025 --dino_align 0.5
+res_random.yaml convnext_upernet none 2 9806 --tag d1a10 --split_seed 2025 --dino_align 1.0
+res_random.yaml convnext_upernet none 2 9818 --tag d3 --split_seed 2025 --ema 0.999 --selfdistill 0.5 --photo

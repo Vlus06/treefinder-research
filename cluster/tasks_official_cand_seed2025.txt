@@ -1,0 +1,48 @@
+--protocol official:random --model unet_r34 --seed 2025 --recipe paper --tag cand_base
+--protocol official:random --model unet_r34 --seed 2025 --recipe paper --tag cand_photo --photo-aug
+--protocol official:random --model unet_r34 --seed 2025 --recipe paper --tag cand_ftv --loss bce_ftversky
+--protocol official:random --model unet_r34 --seed 2025 --recipe paper --tag cand_photo_ftv --photo-aug --loss bce_ftversky
+--protocol official:random --model unet_r34 --seed 2025 --recipe paper --tag cand_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol official:random --model unet_r34 --seed 2025 --recipe paper --tag cand_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol official:w2e --model unet_r34 --seed 2025 --recipe paper --tag cand_base
+--protocol official:w2e --model unet_r34 --seed 2025 --recipe paper --tag cand_photo --photo-aug
+--protocol official:w2e --model unet_r34 --seed 2025 --recipe paper --tag cand_ftv --loss bce_ftversky
+--protocol official:w2e --model unet_r34 --seed 2025 --recipe paper --tag cand_photo_ftv --photo-aug --loss bce_ftversky
+--protocol official:w2e --model unet_r34 --seed 2025 --recipe paper --tag cand_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol official:w2e --model unet_r34 --seed 2025 --recipe paper --tag cand_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol official:e2w --model unet_r34 --seed 2025 --recipe paper --tag cand_base
+--protocol official:e2w --model unet_r34 --seed 2025 --recipe paper --tag cand_photo --photo-aug
+--protocol official:e2w --model unet_r34 --seed 2025 --recipe paper --tag cand_ftv --loss bce_ftversky
+--protocol official:e2w --model unet_r34 --seed 2025 --recipe paper --tag cand_photo_ftv --photo-aug --loss bce_ftversky
+--protocol official:e2w --model unet_r34 --seed 2025 --recipe paper --tag cand_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol official:e2w --model unet_r34 --seed 2025 --recipe paper --tag cand_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol official:co --model unet_r34 --seed 2025 --recipe paper --tag cand_base
+--protocol official:co --model unet_r34 --seed 2025 --recipe paper --tag cand_photo --photo-aug
+--protocol official:co --model unet_r34 --seed 2025 --recipe paper --tag cand_ftv --loss bce_ftversky
+--protocol official:co --model unet_r34 --seed 2025 --recipe paper --tag cand_photo_ftv --photo-aug --loss bce_ftversky
+--protocol official:co --model unet_r34 --seed 2025 --recipe paper --tag cand_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol official:co --model unet_r34 --seed 2025 --recipe paper --tag cand_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol official:climate --model unet_r34 --seed 2025 --recipe paper --tag cand_base
+--protocol official:climate --model unet_r34 --seed 2025 --recipe paper --tag cand_photo --photo-aug
+--protocol official:climate --model unet_r34 --seed 2025 --recipe paper --tag cand_ftv --loss bce_ftversky
+--protocol official:climate --model unet_r34 --seed 2025 --recipe paper --tag cand_photo_ftv --photo-aug --loss bce_ftversky
+--protocol official:climate --model unet_r34 --seed 2025 --recipe paper --tag cand_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol official:climate --model unet_r34 --seed 2025 --recipe paper --tag cand_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol official:climate_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_base
+--protocol official:climate_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_photo --photo-aug
+--protocol official:climate_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_ftv --loss bce_ftversky
+--protocol official:climate_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_photo_ftv --photo-aug --loss bce_ftversky
+--protocol official:climate_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol official:climate_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol official:forest --model unet_r34 --seed 2025 --recipe paper --tag cand_base
+--protocol official:forest --model unet_r34 --seed 2025 --recipe paper --tag cand_photo --photo-aug
+--protocol official:forest --model unet_r34 --seed 2025 --recipe paper --tag cand_ftv --loss bce_ftversky
+--protocol official:forest --model unet_r34 --seed 2025 --recipe paper --tag cand_photo_ftv --photo-aug --loss bce_ftversky
+--protocol official:forest --model unet_r34 --seed 2025 --recipe paper --tag cand_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol official:forest --model unet_r34 --seed 2025 --recipe paper --tag cand_aux_photo_ftv --aux --photo-aug --loss bce_ftversky
+--protocol official:forest_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_base
+--protocol official:forest_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_photo --photo-aug
+--protocol official:forest_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_ftv --loss bce_ftversky
+--protocol official:forest_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_photo_ftv --photo-aug --loss bce_ftversky
+--protocol official:forest_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_both_photo_ftv --norm both --photo-aug --loss bce_ftversky
+--protocol official:forest_hard --model unet_r34 --seed 2025 --recipe paper --tag cand_aux_photo_ftv --aux --photo-aug --loss bce_ftversky

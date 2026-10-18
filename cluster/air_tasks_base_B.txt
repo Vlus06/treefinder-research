@@ -1,0 +1,12 @@
+res_random_site.yaml upernet_swin_s none 2025 8013 --tag base
+res_random_site.yaml upernet_swin_s none 2024 8014 --tag base
+res_random_site.yaml upernet_swin_s none 2023 8015 --tag base
+res_random.yaml upernet_swin_s none 2025 8016 --tag base
+res_random.yaml upernet_swin_s none 2024 8017 --tag base
+res_random.yaml upernet_swin_s none 2023 8018 --tag base
+res_random_site.yaml effunet_b7 none 2025 8019 --tag base
+res_random_site.yaml effunet_b7 none 2024 8020 --tag base
+res_random_site.yaml effunet_b7 none 2023 8021 --tag base
+res_random.yaml effunet_b7 none 2025 8022 --tag base
+res_random.yaml effunet_b7 none 2024 8023 --tag base
+res_random.yaml effunet_b7 none 2023 8024 --tag base

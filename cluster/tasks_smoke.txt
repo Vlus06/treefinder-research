@@ -1,0 +1,1 @@
+--protocol official:random --model official_unet --seed 2025 --recipe paper --tag smoke --epochs 2

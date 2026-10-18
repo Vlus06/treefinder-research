@@ -1,0 +1,5 @@
+--protocol official:random --model official_deeplab --seed 2025 --recipe paper --tag smoke --epochs 1 --max-train 64
+--protocol official:random --model official_segformer --seed 2025 --recipe paper --tag smoke --epochs 1 --max-train 64
+--protocol official:random --model official_mask2former --seed 2025 --recipe paper --tag smoke --epochs 1 --max-train 64
+--protocol official:random --model segformer_b2 --seed 2025 --recipe paper --tag smoke --epochs 1 --max-train 64
+--protocol official:random --model unet_r34 --seed 2025 --recipe paper --tag smoke --epochs 1 --max-train 64

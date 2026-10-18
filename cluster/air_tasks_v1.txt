@@ -1,0 +1,10 @@
+res_random_site.yaml convnext_upernet none 2024 7101 --tag norm --norm tile
+res_random_site.yaml convnext_upernet none 2023 7102 --tag norm --norm tile
+res_random.yaml convnext_upernet none 2024 7103 --tag norm --norm tile
+res_random_site.yaml unet none 2025 7104 --tag norm --norm tile
+res_random_site.yaml deeplabv3 none 2025 7105 --tag norm --norm tile
+res_random_site.yaml treemortseg fixed 2025 7106 --tag norm --norm tile
+res_random_site.yaml convnext_upernet none 1 7110 --tag plain_ts1 --split_seed 2025
+res_random_site.yaml convnext_upernet none 1 7120 --tag norm_ts1 --norm tile --split_seed 2025
+res_random_site.yaml convnext_upernet none 2 7111 --tag plain_ts2 --split_seed 2025
+res_random_site.yaml convnext_upernet none 2 7121 --tag norm_ts2 --norm tile --split_seed 2025

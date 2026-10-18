@@ -1,0 +1,3 @@
+res_random.yaml convnext_b_upernet none 2025 9001 --tag cb
+res_random.yaml convnext_upernet none 2025 9002 --tag up2 --up 2
+res_random.yaml convnext_upernet none 2025 9003 --tag cos60 --sched cosine --epochs 60 --patience 1000

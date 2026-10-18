@@ -1,0 +1,16 @@
+res_random_site.yaml convnext_upernet none 2024 6101
+res_random_site.yaml treemortseg none 2024 6102
+res_random_site.yaml treemortseg fixed 2024 6103
+res_random_site.yaml treemortseg released 2024 6104
+res_random.yaml convnext_upernet none 2024 6105
+res_random.yaml treemortseg none 2024 6106
+res_random.yaml treemortseg fixed 2024 6107
+res_random.yaml treemortseg released 2024 6108
+res_random_site.yaml convnext_upernet none 2023 6109
+res_random_site.yaml treemortseg none 2023 6110
+res_random_site.yaml treemortseg fixed 2023 6111
+res_random_site.yaml treemortseg released 2023 6112
+res_random.yaml convnext_upernet none 2023 6113
+res_random.yaml treemortseg none 2023 6114
+res_random.yaml treemortseg fixed 2023 6115
+res_random.yaml treemortseg released 2023 6116

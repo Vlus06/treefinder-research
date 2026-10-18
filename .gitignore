@@ -6,3 +6,5 @@ results/
 research/reports/
 __pycache__/
 *.pyc
+paper/
+*.pdf
