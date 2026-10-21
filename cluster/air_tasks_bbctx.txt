@@ -1,0 +1,13 @@
+res_random.yaml m_regy4_upernet none 2025 9993 --tag smoke --split_seed 2025 --max_samples 64 --epochs 1 --workers 2 --ctx 112
+res_random.yaml m_regy4_upernet none 2025 9865 --tag ctx112_regy4_upernet --split_seed 2025 --ctx 112
+res_random.yaml m_regy4_upernet none 1 9866 --tag ctx112_regy4_upernet --split_seed 2025 --ctx 112
+res_random.yaml m_regy4_upernet none 2 9867 --tag ctx112_regy4_upernet --split_seed 2025 --ctx 112
+res_random.yaml m_cnx2b_upernet none 2025 9868 --tag ctx112_cnx2b_upernet --split_seed 2025 --ctx 112
+res_random.yaml m_cnx2b_upernet none 1 9869 --tag ctx112_cnx2b_upernet --split_seed 2025 --ctx 112
+res_random.yaml m_cnx2b_upernet none 2 9870 --tag ctx112_cnx2b_upernet --split_seed 2025 --ctx 112
+res_random.yaml m_cnx2b_fpn none 2025 9871 --tag ctx112_cnx2b_fpn --split_seed 2025 --ctx 112
+res_random.yaml m_cnx2b_fpn none 1 9872 --tag ctx112_cnx2b_fpn --split_seed 2025 --ctx 112
+res_random.yaml m_cnx2b_fpn none 2 9873 --tag ctx112_cnx2b_fpn --split_seed 2025 --ctx 112
+res_random.yaml convnext_b_upernet none 2025 9874 --tag ctx112_cnxb_upernet --split_seed 2025 --ctx 112
+res_random.yaml convnext_b_upernet none 1 9875 --tag ctx112_cnxb_upernet --split_seed 2025 --ctx 112
+res_random.yaml convnext_b_upernet none 2 9876 --tag ctx112_cnxb_upernet --split_seed 2025 --ctx 112

@@ -388,6 +388,9 @@ def build_air_model(name: str, in_channels: int = 5, pretrained: bool = True) ->
         return ConvNeXtUPerNet(in_channels=in_channels, num_classes=1, pretrained=pretrained, variant="base")
     if name == "treemortseg_b":
         return TreeMortSeg(in_channels=in_channels, num_classes=1, pretrained=pretrained, variant="base")
+    if name == "convnext_dual":
+        from .models_ctx import DualScaleConvNeXt
+        return DualScaleConvNeXt(in_channels=in_channels, pretrained=pretrained)
     from .models_extra import build_extra
     m = build_extra(name, in_channels, pretrained)
     if m is not None:

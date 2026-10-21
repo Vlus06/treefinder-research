@@ -1,0 +1,7 @@
+res_state_CO.yaml convnext_upernet none 2025 9981 --tag smoke --max_samples 64 --epochs 5 --workers 2 --ema 0.99 --st 1.0
+res_state_CO.yaml convnext_upernet none 2025 9908 --tag co_st --ema 0.999 --st 1.0
+res_state_CO.yaml convnext_upernet none 2024 9909 --tag co_st --ema 0.999 --st 1.0
+res_state_CO.yaml convnext_upernet none 2023 9910 --tag co_st --ema 0.999 --st 1.0
+res_state_CO.yaml convnext_upernet none 2025 9911 --tag co_st05 --ema 0.999 --st 0.5
+res_state_CO.yaml convnext_upernet none 2024 9912 --tag co_st05 --ema 0.999 --st 0.5
+res_state_CO.yaml convnext_upernet none 2023 9913 --tag co_st05 --ema 0.999 --st 0.5

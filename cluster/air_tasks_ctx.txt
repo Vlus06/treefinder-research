@@ -1,0 +1,7 @@
+res_random.yaml convnext_upernet none 2025 9899 --tag smoke_ctx --split_seed 2025 --max_samples 64 --epochs 1 --workers 2 --ctx 112
+res_random.yaml convnext_upernet none 2025 9840 --tag ctx112 --split_seed 2025 --ctx 112
+res_random.yaml convnext_upernet none 1 9841 --tag ctx112 --split_seed 2025 --ctx 112
+res_random.yaml convnext_upernet none 2 9842 --tag ctx112 --split_seed 2025 --ctx 112
+res_random.yaml convnext_upernet none 2025 9843 --tag ctx112_gate --split_seed 2025 --ctx 112 --gate 0.3
+res_random.yaml convnext_upernet none 1 9844 --tag ctx112_gate --split_seed 2025 --ctx 112 --gate 0.3
+res_random.yaml convnext_upernet none 2 9845 --tag ctx112_gate --split_seed 2025 --ctx 112 --gate 0.3

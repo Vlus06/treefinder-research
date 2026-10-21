@@ -1,0 +1,6 @@
+res_random.yaml m_cnx2b_unet none 2025 9830 --tag cnx2b_unet --split_seed 2025
+res_random.yaml m_cnx2b_unet none 1 9831 --tag cnx2b_unet --split_seed 2025
+res_random.yaml m_cnx2b_unet none 2 9832 --tag cnx2b_unet --split_seed 2025
+res_random.yaml m_cnx2b_unet none 2025 9833 --tag cnx2b_unet_gate --split_seed 2025 --gate 0.3
+res_random.yaml m_cnx2b_unet none 1 9834 --tag cnx2b_unet_gate --split_seed 2025 --gate 0.3
+res_random.yaml m_cnx2b_unet none 2 9835 --tag cnx2b_unet_gate --split_seed 2025 --gate 0.3

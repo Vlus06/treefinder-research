@@ -1,0 +1,17 @@
+res_state_CO.yaml convnext_upernet none 2025 9472 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --bank_gen 1.5
+res_state_CO.yaml convnext_upernet none 2025 9473 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --bank_indep --bank_lam beta
+res_state_CO.yaml convnext_upernet none 2025 9515 --tag v_lam_beta --bank src --cons 1.0 --bank_lam beta
+res_state_CO.yaml convnext_upernet none 2024 9516 --tag v_lam_beta --bank src --cons 1.0 --bank_lam beta
+res_state_CO.yaml convnext_upernet none 2023 9517 --tag v_lam_beta --bank src --cons 1.0 --bank_lam beta
+res_state_CO.yaml convnext_upernet none 2025 9518 --tag v_gen10 --bank src --cons 1.0 --bank_gen 1.0
+res_state_CO.yaml convnext_upernet none 2024 9519 --tag v_gen10 --bank src --cons 1.0 --bank_gen 1.0
+res_state_CO.yaml convnext_upernet none 2023 9520 --tag v_gen10 --bank src --cons 1.0 --bank_gen 1.0
+res_state_CO.yaml convnext_upernet none 2025 9521 --tag v_gen15 --bank src --cons 1.0 --bank_gen 1.5
+res_state_CO.yaml convnext_upernet none 2024 9522 --tag v_gen15 --bank src --cons 1.0 --bank_gen 1.5
+res_state_CO.yaml convnext_upernet none 2023 9523 --tag v_gen15 --bank src --cons 1.0 --bank_gen 1.5
+res_state_CO.yaml convnext_upernet none 2025 9524 --tag v_gen20 --bank src --cons 1.0 --bank_gen 2.0
+res_state_CO.yaml convnext_upernet none 2024 9525 --tag v_gen20 --bank src --cons 1.0 --bank_gen 2.0
+res_state_CO.yaml convnext_upernet none 2023 9526 --tag v_gen20 --bank src --cons 1.0 --bank_gen 2.0
+res_state_CO.yaml convnext_upernet none 2025 9527 --tag v_indep --bank src --cons 1.0 --bank_indep
+res_state_CO.yaml convnext_upernet none 2024 9528 --tag v_indep --bank src --cons 1.0 --bank_indep
+res_state_CO.yaml convnext_upernet none 2023 9529 --tag v_indep --bank src --cons 1.0 --bank_indep

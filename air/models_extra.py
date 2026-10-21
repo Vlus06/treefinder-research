@@ -93,11 +93,11 @@ class Dinov2Seg(nn.Module):
     """DINOv2 ViT-B/14 + multi-level convolutional decoder. The tile is upsampled x2 internally so that a ~9 px dead crown
     spans more than one 14 px patch. Hidden states of layers 3/6/9/12 feed a progressive-upsampling decoder."""
 
-    def __init__(self, in_channels=5, pretrained=True, up=2):
+    def __init__(self, in_channels=5, pretrained=True, up=2, name="facebook/dinov2-base", layers=(3, 6, 9, 12)):
         super().__init__()
         from transformers import Dinov2Config, Dinov2Model
-        self.up = up
-        self.vit = Dinov2Model.from_pretrained("facebook/dinov2-base") if pretrained else Dinov2Model(Dinov2Config())
+        self.up, self.layers = up, tuple(layers)
+        self.vit = Dinov2Model.from_pretrained(name) if pretrained else Dinov2Model(Dinov2Config.from_pretrained(name))
         pe = self.vit.embeddings.patch_embeddings
         pe.projection = widen_first_conv(pe.projection, in_channels)
         pe.num_channels = in_channels
@@ -120,7 +120,7 @@ class Dinov2Seg(nn.Module):
         x = x[:, :, : h * 14, : w * 14]
         hs = self.vit(pixel_values=x, output_hidden_states=True).hidden_states
         feats = []
-        for proj, i in zip(self.proj, (3, 6, 9, 12)):
+        for proj, i in zip(self.proj, self.layers):
             t = hs[i][:, 1:]                                               # drop the CLS token
             feats.append(proj(t.transpose(1, 2).reshape(t.shape[0], -1, h, w)))
         y = self.up2(self.up1(self.fuse(torch.cat(feats, 1))))
@@ -155,6 +155,8 @@ def build_extra(name: str, in_channels: int = 5, pretrained: bool = True):
         "upernet_swin_s": lambda: UperNetSwin("small", in_channels, pretrained),
         "effunet_b7": lambda: EffUNet(in_channels, pretrained),
         "dinov2_b": lambda: Dinov2Seg(in_channels, pretrained),
+        "dinov2_s": lambda: Dinov2Seg(in_channels, pretrained, name="facebook/dinov2-small", layers=(3, 6, 9, 12)),
+        "dinov2_l": lambda: Dinov2Seg(in_channels, pretrained, name="facebook/dinov2-large", layers=(6, 12, 18, 24)),
         "hrnet_w32": lambda: HRNetSeg(in_channels, pretrained),
     }
     return table[name]() if name in table else None

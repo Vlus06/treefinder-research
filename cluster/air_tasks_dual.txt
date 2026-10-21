@@ -1,0 +1,7 @@
+res_random.yaml convnext_dual none 2025 9992 --tag smoke --split_seed 2025 --max_samples 64 --epochs 1 --workers 2 --ctx 224 --bs 8
+res_random.yaml convnext_dual none 2025 9859 --tag dual --split_seed 2025 --ctx 224 --bs 16
+res_random.yaml convnext_dual none 1 9860 --tag dual --split_seed 2025 --ctx 224 --bs 16
+res_random.yaml convnext_dual none 2 9861 --tag dual --split_seed 2025 --ctx 224 --bs 16
+res_random_site.yaml convnext_dual none 2025 9862 --tag site_dual --split_seed 2025 --ctx 224 --bs 16
+res_random_site.yaml convnext_dual none 1 9863 --tag site_dual --split_seed 2025 --ctx 224 --bs 16
+res_random_site.yaml convnext_dual none 2 9864 --tag site_dual --split_seed 2025 --ctx 224 --bs 16

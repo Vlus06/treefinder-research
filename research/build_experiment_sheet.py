@@ -68,10 +68,14 @@ def air_desc(g):
     if g.get("patience", 10) != 10: parts.append(f"patience {g['patience']}")
     for k, lbl in (("dino_align", "căn chỉnh DINOv2"), ("distill", "distill"), ("selfdistill", "self-distill"),
                    ("copypaste", "copy-paste"), ("gate", "tile gate")):
-        if g.get(k): parts.append(f"{lbl} {g[k]}")
+        if g.get(k):
+            if k == "distill":
+                parts.append(f"distill từ {len(g[k].split(','))} teacher (α={g.get('distill_alpha', 0.5)}, T={g.get('distill_T', 1.0)})")
+            else:
+                parts.append(f"{lbl} {g[k]}")
     if g["model"] == "treemortseg":
         parts.append({"none": "không aux (chỉ mask)", "released": "aux nhãn phát hành", "fixed": "aux nhãn sửa lỗi"}[g.get("aux", "none")])
-    if g.get("split_seed"): parts.append(f"split seed {g['split_seed']}")
+    if g.get("split_seed"): parts.append(f"split seed {g['split_seed']} (cố định)")
     if g.get("tag"): parts.append(f"tag={g['tag']}")
     return "; ".join(parts) or "recipe chuẩn (AdamW 1e-4, patience 10)"
 
@@ -159,14 +163,25 @@ def main():
     # --- group means for multi-seed (own+official) rows
     from collections import defaultdict
     grp = defaultdict(list)
+    norm = lambda d: re.sub(r"tag=(noise|plain_ts|ts)\d*", "", re.sub(r"split seed \d+ \(cố định\); ?", "", d)).strip("; ") or "recipe chuẩn (AdamW 1e-4, patience 10)"
     for r in rows:
-        if r["order"] in (1, 2) and r.get("F1") is not None:
-            grp[(r["order"], r["source"], r["scen"], r["model"], r["desc"].split("; split seed")[0])].append(r)
+        if r.get("F1") is None or r["order"] not in (1, 2): continue
+        if r["order"] == 1:
+            grp[("split-khác-nhau", r["order"], r["source"], r["scen"], r["model"], r["desc"])].append(r)
+            continue
+        seed, ss = r["seedkey"]
+        base = (r["order"], r["source"], r["scen"], r["model"], norm(r["desc"]))
+        if (ss or seed) == 2025:                       # same split 2025, only the training seed differs
+            grp[("split 2025 cố định",) + base].append(r)
+        if not ss:                                     # seed also selects the split (2025/2024/2023)
+            grp[("split-khác-nhau",) + base].append(r)
     means = []
-    for (o, src, sc, mn, desc), rs in grp.items():
-        if len(rs) < 2: continue
+    for (kind, o, src, sc, mn, desc), rs in grp.items():
+        if len(rs) < 3: continue
+        if kind == "split 2025 cố định" and len({x["seedkey"][0] for x in rs}) < 3: continue
         f = [x["F1"] for x in rs]
-        means.append(dict(order=o, source=src, scen=sc, model=mn, desc=desc, seed=f"TRUNG BÌNH {len(rs)} lần chạy", mean=True,
+        lab = "TB %d seed huấn luyện (split 2025 cố định)" % len(rs) if kind.startswith("split 2025") else "TB %d lần chạy (mỗi seed một split)" % len(rs)
+        means.append(dict(order=o, source=src, scen=sc, model=mn, desc=desc, seed=lab, mean=True,
                           F1=st.mean(f), P=st.mean(x["P"] for x in rs), R=st.mean(x["R"] for x in rs), IoU=st.mean(x["IoU"] for x in rs),
                           All=st.mean(x["All"] for x in rs), paperF1=rs[0].get("paperF1"), note="± %.1f (sd, n=%d)" % (st.stdev(f), len(f))))
     rows += means
@@ -218,14 +233,18 @@ INSIGHTS = [
     ("Mô hình", "Các mẹo không giúp / không ổn định", "Chuẩn hoá từng tile (+9 chỉ ở 1 split, TB −8 trên 3 split), EMA, TTA, sampler theo site, V-REx", "Loại khỏi danh sách đề xuất"),
     ("Lỗi", "~45% pixel false positive nằm trong tile không có cây chết", "Phân tích error anatomy mức tán cây", "Gợi ý cổng hiện diện ở mức tile (M2)"),
     ("Lỗi", "Tán nhỏ bị bỏ sót nhiều", "Bỏ sót theo kích thước: tán nhỏ chiếm phần lớn FN", "Gợi ý copy-paste tán nhỏ và tinh chỉnh độ phân giải cao (M1)"),
+    ("Phương pháp mới", "D1 (căn chỉnh DINOv2) làm hại", "TB 3 seed (split 2025 cố định): λ=0,5 → 59,0; λ=1 → 59,2; D1+D2 → 59,6 so với baseline 63,15", "Bác bỏ giả thuyết 'ngữ nghĩa DINOv2 giúp ConvNeXt'; bỏ D1"),
+    ("Phương pháp mới", "D2 (distill ensemble) không ổn định", "T=1: 64,7 / 61,0 / 63,7 (TB 63,1 ± 1,9); T=2: 61,6 / 65,2 / 64,6 (TB 63,8 ± 1,9)", "Một seed có thể đánh lừa; cần nhiều seed và cách distill ổn định hơn (teacher chưa thấy train, cross-fit)"),
+    ("Phương pháp mới", "Tile gate: lợi ích nhỏ nhưng nhất quán", "63,9 / 63,4 / 63,9 (TB 63,7 ± 0,3) vs 63,15 ± 0,4; cả 3 seed đều hơn", "Hợp với phân tích lỗi (45% FP ở tile rỗng) nhưng mới +0,6"),
+    ("Phương pháp mới", "Copy-paste và self-distill (D3)", "copy-paste TB 63,4 ± 0,1 (trong nhiễu); D3 TB 61,1 (bị confound EMA/photo)", "Không đủ để đạt mục tiêu"),
     ("Đánh giá", "Điểm số dao động mạnh theo split", "sd 4–7 điểm khi đổi seed/split (split thay đổi theo seed)", "Dùng split cố định 2025 và đổi seed huấn luyện (nhiễu ≈ ±0.4) để so sánh ghép cặp"),
 ]
 DIRECTIONS = [
-    ("1", "D1 – Căn chỉnh biểu diễn với DINOv2 đóng băng", "Đặc trưng stride-16 của ConvNeXt thiếu ngữ nghĩa mà DINOv2 có; ép cosine tới patch feature sẽ giảm FP ngoài rừng", "--dino_align λ trên split 2025, 3 seed huấn luyện, so với 63.1±0.4", "Đã code, chưa chạy"),
+    ("1", "D1 – Căn chỉnh biểu diễn với DINOv2 đóng băng", "Đặc trưng stride-16 của ConvNeXt thiếu ngữ nghĩa mà DINOv2 có; ép cosine tới patch feature sẽ giảm FP ngoài rừng", "--dino_align λ trên split 2025, 3 seed huấn luyện, so với 63.1±0.4", "Đã chạy 3 seed: tệ hơn baseline ~4 điểm → bỏ"),
     ("2", "D2 – Distill ensemble → 1 student", "Nhận được phần lớn +1.6 F1/+9 AP của ensemble với chi phí suy luận 1×", "--distill (teacher ConvNeXt+DINOv2+TreeMortSeg), α∈{0.5}, T∈{1,2}; lưu ý teacher đã thấy dữ liệu train", "Đã code, chưa chạy"),
-    ("3", "D3 – Self-distillation / mean teacher", "Soft label từ EMA của chính model giảm nhiễu nhãn mức pixel", "--ema 0.999 --selfdistill α", "Đã code, chưa chạy"),
-    ("4", "Copy-paste tán chết nhỏ", "Tán nhỏ là lỗi chính; thêm ví dụ nhỏ tăng recall", "--copypaste 0.5", "Đã code, chưa chạy"),
-    ("5", "M2 – Cổng hiện diện ở mức tile", "Nhắm vào 45% FP ở tile rỗng", "--gate w; theo dõi precision/AP", "Đã code, chưa chạy"),
+    ("3", "D3 – Self-distillation / mean teacher", "Soft label từ EMA của chính model giảm nhiễu nhãn mức pixel", "--ema 0.999 --selfdistill α", "Đã chạy 3 seed: TB 61,1 (kém baseline)"),
+    ("4", "Copy-paste tán chết nhỏ", "Tán nhỏ là lỗi chính; thêm ví dụ nhỏ tăng recall", "--copypaste 0.5", "Đã chạy 3 seed: TB 63,4 (trong nhiễu)"),
+    ("5", "M2 – Cổng hiện diện ở mức tile", "Nhắm vào 45% FP ở tile rỗng", "--gate w; theo dõi precision/AP", "Đã chạy 3 seed: TB 63,7 (+0,6, nhất quán)"),
     ("6", "M1 – Tinh chỉnh độ phân giải cao cho tán nhỏ", "Stride-4 của decoder quá thô cho tán ~9 px", "Chưa code; thử input ×2 hoặc nhánh refine", "Ý tưởng"),
     ("7", "Kết hợp tốt nhất (D1+D2, v.v.) + ablation đa seed", "Các thành phần bổ trợ nhau", "3 seed, kiểm định ghép cặp; sau đó chạy cross-region và split tách site", "Sau bước 1–5"),
     ("8", "Cross-region (E–W, W–E, CO)", "Mục tiêu so với TreeMortSeg 28.84 / 23.67 / 19.55", "Đang chạy ConvNeXt/TreeMortSeg 3 seed (job 4333/4334)", "Đang chạy"),

@@ -1,0 +1,13 @@
+res_state_CO.yaml convnext_upernet none 2025 9391 --tag smoke --max_samples 64 --epochs 5 --workers 2 --mixstyle 0.5
+res_random.yaml convnext_upernet none 2025 9392 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --split_seed 2025
+res_state_CO.yaml convnext_upernet none 2025 9420 --tag co_mixstyle --mixstyle 0.5
+res_state_CO.yaml convnext_upernet none 2024 9421 --tag co_mixstyle --mixstyle 0.5
+res_state_CO.yaml convnext_upernet none 2023 9422 --tag co_mixstyle --mixstyle 0.5
+res_state_CO.yaml convnext_upernet none 1 9423 --tag co_mixstyle --mixstyle 0.5
+res_state_CO.yaml convnext_upernet none 2 9424 --tag co_mixstyle --mixstyle 0.5
+res_random.yaml convnext_upernet none 2025 9425 --tag tile_method --bank src --cons 1.0 --split_seed 2025
+res_random.yaml convnext_upernet none 1 9426 --tag tile_method --bank src --cons 1.0 --split_seed 2025
+res_random.yaml convnext_upernet none 2 9427 --tag tile_method --bank src --cons 1.0 --split_seed 2025
+res_random.yaml convnext_upernet none 2025 9428 --tag tile_photo --photo --split_seed 2025
+res_random.yaml convnext_upernet none 1 9429 --tag tile_photo --photo --split_seed 2025
+res_random.yaml convnext_upernet none 2 9430 --tag tile_photo --photo --split_seed 2025

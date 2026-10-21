@@ -1,0 +1,24 @@
+res_state_CO.yaml convnext_upernet none 2025 9281 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --photo --cons 1.0
+res_state_CO.yaml convnext_upernet none 2025 9282 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank all
+res_state_CO.yaml convnext_upernet none 2025 9283 --tag smoke --max_samples 64 --epochs 5 --workers 2 --fda 0.5 --photo
+res_state_CO.yaml convnext_upernet none 2025 9318 --tag co_bank_src --bank src
+res_state_CO.yaml convnext_upernet none 2024 9319 --tag co_bank_src --bank src
+res_state_CO.yaml convnext_upernet none 2023 9320 --tag co_bank_src --bank src
+res_state_CO.yaml convnext_upernet none 2025 9321 --tag co_bank_all --bank all
+res_state_CO.yaml convnext_upernet none 2024 9322 --tag co_bank_all --bank all
+res_state_CO.yaml convnext_upernet none 2023 9323 --tag co_bank_all --bank all
+res_state_CO.yaml convnext_upernet none 2025 9324 --tag co_bank_src_photo --bank src --photo
+res_state_CO.yaml convnext_upernet none 2024 9325 --tag co_bank_src_photo --bank src --photo
+res_state_CO.yaml convnext_upernet none 2023 9326 --tag co_bank_src_photo --bank src --photo
+res_state_CO.yaml convnext_upernet none 2025 9327 --tag co_photo_cons --photo --cons 1.0
+res_state_CO.yaml convnext_upernet none 2024 9328 --tag co_photo_cons --photo --cons 1.0
+res_state_CO.yaml convnext_upernet none 2023 9329 --tag co_photo_cons --photo --cons 1.0
+res_state_CO.yaml convnext_upernet none 2025 9330 --tag co_bank_src_cons --bank src --cons 1.0
+res_state_CO.yaml convnext_upernet none 2024 9331 --tag co_bank_src_cons --bank src --cons 1.0
+res_state_CO.yaml convnext_upernet none 2023 9332 --tag co_bank_src_cons --bank src --cons 1.0
+res_state_CO.yaml convnext_upernet none 2025 9333 --tag co_fda --fda 0.5
+res_state_CO.yaml convnext_upernet none 2024 9334 --tag co_fda --fda 0.5
+res_state_CO.yaml convnext_upernet none 2023 9335 --tag co_fda --fda 0.5
+res_state_CO.yaml convnext_upernet none 2025 9336 --tag co_fda_photo --fda 0.5 --photo
+res_state_CO.yaml convnext_upernet none 2024 9337 --tag co_fda_photo --fda 0.5 --photo
+res_state_CO.yaml convnext_upernet none 2023 9338 --tag co_fda_photo --fda 0.5 --photo

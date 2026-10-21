@@ -1,0 +1,7 @@
+res_state_CO.yaml m_cnx2b_upernet none 2025 9454 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0
+res_state_CO.yaml m_cnx2b_upernet none 2025 9484 --tag co_cnx2b_plain
+res_state_CO.yaml m_cnx2b_upernet none 2025 9485 --tag co_cnx2b_method --bank src --cons 1.0
+res_state_CO.yaml m_cnx2b_upernet none 2024 9486 --tag co_cnx2b_plain
+res_state_CO.yaml m_cnx2b_upernet none 2024 9487 --tag co_cnx2b_method --bank src --cons 1.0
+res_state_CO.yaml m_cnx2b_upernet none 2023 9488 --tag co_cnx2b_plain
+res_state_CO.yaml m_cnx2b_upernet none 2023 9489 --tag co_cnx2b_method --bank src --cons 1.0

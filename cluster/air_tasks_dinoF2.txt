@@ -1,0 +1,19 @@
+res_treetype1.yaml dinov2_b none 2025 9636 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_treetype1.yaml dinov2_b none 2025 9658 --tag tt1_dino_plain --lr_backbone_mult 0.1
+res_treetype1.yaml dinov2_b none 2024 9659 --tag tt1_dino_plain --lr_backbone_mult 0.1
+res_treetype1.yaml dinov2_b none 2023 9660 --tag tt1_dino_plain --lr_backbone_mult 0.1
+res_treetype1.yaml dinov2_b none 2025 9661 --tag tt1_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_treetype1.yaml dinov2_b none 2024 9662 --tag tt1_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_treetype1.yaml dinov2_b none 2023 9663 --tag tt1_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_treetype1.yaml treemortseg fixed 2025 9664 --tag tt1_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_treetype1.yaml treemortseg fixed 2024 9665 --tag tt1_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_treetype1.yaml treemortseg fixed 2023 9666 --tag tt1_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_treetype3.yaml dinov2_b none 2025 9667 --tag tt3_dino_plain --lr_backbone_mult 0.1
+res_treetype3.yaml dinov2_b none 2024 9668 --tag tt3_dino_plain --lr_backbone_mult 0.1
+res_treetype3.yaml dinov2_b none 2023 9669 --tag tt3_dino_plain --lr_backbone_mult 0.1
+res_treetype3.yaml dinov2_b none 2025 9670 --tag tt3_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_treetype3.yaml dinov2_b none 2024 9671 --tag tt3_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_treetype3.yaml dinov2_b none 2023 9672 --tag tt3_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_treetype3.yaml treemortseg fixed 2025 9673 --tag tt3_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_treetype3.yaml treemortseg fixed 2024 9674 --tag tt3_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_treetype3.yaml treemortseg fixed 2023 9675 --tag tt3_tms_fixed --w_edge 2.5 --w_dist 2.5

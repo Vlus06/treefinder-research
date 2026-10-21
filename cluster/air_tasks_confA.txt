@@ -1,0 +1,21 @@
+res_state_CO.yaml convnext_upernet none 2025 9390 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0
+res_state_CO.yaml convnext_upernet none 1 9400 --tag cf_method --bank src --cons 1.0
+res_state_CO.yaml convnext_upernet none 2 9401 --tag cf_method --bank src --cons 1.0
+res_state_CO.yaml convnext_upernet none 3 9402 --tag cf_method --bank src --cons 1.0
+res_state_CO.yaml convnext_upernet none 4 9403 --tag cf_method --bank src --cons 1.0
+res_state_CO.yaml convnext_upernet none 5 9404 --tag cf_method --bank src --cons 1.0
+res_state_CO.yaml treemortseg fixed 1 9405 --tag cf_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 2 9406 --tag cf_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 3 9407 --tag cf_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 4 9408 --tag cf_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 5 9409 --tag cf_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml convnext_upernet none 1 9410 --tag cf_base
+res_state_CO.yaml convnext_upernet none 2 9411 --tag cf_base
+res_state_CO.yaml convnext_upernet none 3 9412 --tag cf_base
+res_state_CO.yaml convnext_upernet none 4 9413 --tag cf_base
+res_state_CO.yaml convnext_upernet none 5 9414 --tag cf_base
+res_state_CO.yaml convnext_upernet none 1 9415 --tag cf_photo --photo
+res_state_CO.yaml convnext_upernet none 2 9416 --tag cf_photo --photo
+res_state_CO.yaml convnext_upernet none 3 9417 --tag cf_photo --photo
+res_state_CO.yaml convnext_upernet none 4 9418 --tag cf_photo --photo
+res_state_CO.yaml convnext_upernet none 5 9419 --tag cf_photo --photo

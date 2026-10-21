@@ -1,0 +1,12 @@
+res_state_CO.yaml treemortseg fixed 2025 9950 --tag co_tms_fixed_w25 --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 2024 9951 --tag co_tms_fixed_w25 --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 2023 9952 --tag co_tms_fixed_w25 --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg released 2025 9953 --tag co_tms_released_w25 --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg released 2024 9954 --tag co_tms_released_w25 --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg released 2023 9955 --tag co_tms_released_w25 --w_edge 2.5 --w_dist 2.5
+res_random.yaml treemortseg fixed 2025 9956 --tag tile_tms_fixed_w25 --w_edge 2.5 --w_dist 2.5 --split_seed 2025
+res_random.yaml treemortseg fixed 2024 9957 --tag tile_tms_fixed_w25 --w_edge 2.5 --w_dist 2.5 --split_seed 2025
+res_random.yaml treemortseg fixed 2023 9958 --tag tile_tms_fixed_w25 --w_edge 2.5 --w_dist 2.5 --split_seed 2025
+res_random.yaml treemortseg released 2025 9959 --tag tile_tms_released_w25 --w_edge 2.5 --w_dist 2.5 --split_seed 2025
+res_random.yaml treemortseg released 2024 9960 --tag tile_tms_released_w25 --w_edge 2.5 --w_dist 2.5 --split_seed 2025
+res_random.yaml treemortseg released 2023 9961 --tag tile_tms_released_w25 --w_edge 2.5 --w_dist 2.5 --split_seed 2025

@@ -1,0 +1,14 @@
+res_state_CO.yaml dinov2_b none 2025 9450 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml segformer_b5 none 2025 9451 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0
+res_state_CO.yaml dinov2_b none 2025 9460 --tag co_dino_plain --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 9461 --tag co_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9462 --tag co_dino_plain --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9463 --tag co_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9464 --tag co_dino_plain --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9465 --tag co_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml segformer_b5 none 2025 9466 --tag co_segf_plain
+res_state_CO.yaml segformer_b5 none 2025 9467 --tag co_segf_method --bank src --cons 1.0
+res_state_CO.yaml segformer_b5 none 2024 9468 --tag co_segf_plain
+res_state_CO.yaml segformer_b5 none 2024 9469 --tag co_segf_method --bank src --cons 1.0
+res_state_CO.yaml segformer_b5 none 2023 9470 --tag co_segf_plain
+res_state_CO.yaml segformer_b5 none 2023 9471 --tag co_segf_method --bank src --cons 1.0

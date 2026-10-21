@@ -1,0 +1,19 @@
+res_climate1.yaml dinov2_b none 2025 9636 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_climate1.yaml dinov2_b none 2025 9640 --tag cl1_dino_plain --lr_backbone_mult 0.1
+res_climate1.yaml dinov2_b none 2024 9641 --tag cl1_dino_plain --lr_backbone_mult 0.1
+res_climate1.yaml dinov2_b none 2023 9642 --tag cl1_dino_plain --lr_backbone_mult 0.1
+res_climate1.yaml dinov2_b none 2025 9643 --tag cl1_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_climate1.yaml dinov2_b none 2024 9644 --tag cl1_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_climate1.yaml dinov2_b none 2023 9645 --tag cl1_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_climate1.yaml treemortseg fixed 2025 9646 --tag cl1_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_climate1.yaml treemortseg fixed 2024 9647 --tag cl1_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_climate1.yaml treemortseg fixed 2023 9648 --tag cl1_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_climate3.yaml dinov2_b none 2025 9649 --tag cl3_dino_plain --lr_backbone_mult 0.1
+res_climate3.yaml dinov2_b none 2024 9650 --tag cl3_dino_plain --lr_backbone_mult 0.1
+res_climate3.yaml dinov2_b none 2023 9651 --tag cl3_dino_plain --lr_backbone_mult 0.1
+res_climate3.yaml dinov2_b none 2025 9652 --tag cl3_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_climate3.yaml dinov2_b none 2024 9653 --tag cl3_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_climate3.yaml dinov2_b none 2023 9654 --tag cl3_dino_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_climate3.yaml treemortseg fixed 2025 9655 --tag cl3_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_climate3.yaml treemortseg fixed 2024 9656 --tag cl3_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_climate3.yaml treemortseg fixed 2023 9657 --tag cl3_tms_fixed --w_edge 2.5 --w_dist 2.5

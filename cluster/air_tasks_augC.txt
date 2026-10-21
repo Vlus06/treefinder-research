@@ -1,0 +1,21 @@
+res_state_CO.yaml treemortseg fixed 2025 9284 --tag smoke --max_samples 64 --epochs 5 --workers 2 --photo --bank src --cons 1.0 --w_edge 2.5 --w_dist 2.5
+res_state_EW.yaml convnext_upernet none 2025 9285 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --photo
+res_state_CO.yaml treemortseg fixed 2025 9339 --tag co_tms_fixed_photo --photo --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 2024 9340 --tag co_tms_fixed_photo --photo --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 2023 9341 --tag co_tms_fixed_photo --photo --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 2025 9342 --tag co_tms_fixed_bank_cons --bank src --cons 1.0 --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 2024 9343 --tag co_tms_fixed_bank_cons --bank src --cons 1.0 --w_edge 2.5 --w_dist 2.5
+res_state_CO.yaml treemortseg fixed 2023 9344 --tag co_tms_fixed_bank_cons --bank src --cons 1.0 --w_edge 2.5 --w_dist 2.5
+res_state_WE.yaml convnext_upernet none 2023 9345 --tag we_base
+res_state_EW.yaml convnext_upernet none 2025 9346 --tag ew_photo --photo
+res_state_EW.yaml convnext_upernet none 2024 9347 --tag ew_photo --photo
+res_state_EW.yaml convnext_upernet none 2023 9348 --tag ew_photo --photo
+res_state_EW.yaml convnext_upernet none 2025 9349 --tag ew_bank_src --bank src
+res_state_EW.yaml convnext_upernet none 2024 9350 --tag ew_bank_src --bank src
+res_state_EW.yaml convnext_upernet none 2023 9351 --tag ew_bank_src --bank src
+res_state_WE.yaml convnext_upernet none 2025 9352 --tag we_photo --photo
+res_state_WE.yaml convnext_upernet none 2024 9353 --tag we_photo --photo
+res_state_WE.yaml convnext_upernet none 2023 9354 --tag we_photo --photo
+res_state_WE.yaml convnext_upernet none 2025 9355 --tag we_bank_src --bank src
+res_state_WE.yaml convnext_upernet none 2024 9356 --tag we_bank_src --bank src
+res_state_WE.yaml convnext_upernet none 2023 9357 --tag we_bank_src --bank src

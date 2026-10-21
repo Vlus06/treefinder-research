@@ -1,0 +1,13 @@
+res_state_EW.yaml convnext_upernet none 2025 9393 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0
+res_state_EW.yaml convnext_upernet none 2025 9431 --tag ew_method --bank src --cons 1.0
+res_state_EW.yaml convnext_upernet none 2024 9432 --tag ew_method --bank src --cons 1.0
+res_state_EW.yaml convnext_upernet none 2023 9433 --tag ew_method --bank src --cons 1.0
+res_state_EW.yaml treemortseg fixed 2025 9434 --tag ew_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_EW.yaml treemortseg fixed 2024 9435 --tag ew_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_EW.yaml treemortseg fixed 2023 9436 --tag ew_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_WE.yaml convnext_upernet none 2025 9437 --tag we_method --bank src --cons 1.0
+res_state_WE.yaml convnext_upernet none 2024 9438 --tag we_method --bank src --cons 1.0
+res_state_WE.yaml convnext_upernet none 2023 9439 --tag we_method --bank src --cons 1.0
+res_state_WE.yaml treemortseg fixed 2025 9440 --tag we_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_WE.yaml treemortseg fixed 2024 9441 --tag we_tms_fixed --w_edge 2.5 --w_dist 2.5
+res_state_WE.yaml treemortseg fixed 2023 9442 --tag we_tms_fixed --w_edge 2.5 --w_dist 2.5
