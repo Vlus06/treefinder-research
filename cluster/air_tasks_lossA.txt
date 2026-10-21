@@ -1,0 +1,22 @@
+res_state_CO.yaml dinov2_b none 2025 9640 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --cons_ratio 2.0 --cons_w 1.0 --views 3 --tilt 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 9650 --tag co_dino_l_asym2 --bank src --cons 1.0 --cons_ratio 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9651 --tag co_dino_l_asym2 --bank src --cons 1.0 --cons_ratio 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9652 --tag co_dino_l_asym2 --bank src --cons 1.0 --cons_ratio 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 9653 --tag co_dino_l_asym4 --bank src --cons 1.0 --cons_ratio 4.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9654 --tag co_dino_l_asym4 --bank src --cons 1.0 --cons_ratio 4.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9655 --tag co_dino_l_asym4 --bank src --cons 1.0 --cons_ratio 4.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 9656 --tag co_dino_l_w1 --bank src --cons 1.0 --cons_w 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9657 --tag co_dino_l_w1 --bank src --cons 1.0 --cons_w 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9658 --tag co_dino_l_w1 --bank src --cons 1.0 --cons_w 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 9659 --tag co_dino_l_asym2_w1 --bank src --cons 1.0 --cons_ratio 2.0 --cons_w 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9660 --tag co_dino_l_asym2_w1 --bank src --cons 1.0 --cons_ratio 2.0 --cons_w 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9661 --tag co_dino_l_asym2_w1 --bank src --cons 1.0 --cons_ratio 2.0 --cons_w 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 9662 --tag co_dino_l_tilt --bank src --cons 1.0 --views 3 --tilt 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9663 --tag co_dino_l_tilt --bank src --cons 1.0 --views 3 --tilt 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9664 --tag co_dino_l_tilt --bank src --cons 1.0 --views 3 --tilt 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 9665 --tag co_dino_l_full --bank src --cons 1.0 --cons_ratio 2.0 --cons_w 1.0 --views 3 --tilt 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9666 --tag co_dino_l_full --bank src --cons 1.0 --cons_ratio 2.0 --cons_w 1.0 --views 3 --tilt 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9667 --tag co_dino_l_full --bank src --cons 1.0 --cons_ratio 2.0 --cons_w 1.0 --views 3 --tilt 2.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 9668 --tag co_dino_l_tversky --bank src --cons 1.0 --loss bce_ftversky --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 9669 --tag co_dino_l_tversky --bank src --cons 1.0 --loss bce_ftversky --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 9670 --tag co_dino_l_tversky --bank src --cons 1.0 --loss bce_ftversky --lr_backbone_mult 0.1

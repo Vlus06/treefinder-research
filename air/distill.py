@@ -21,6 +21,7 @@ class GateWrap(nn.Module):
     def __init__(self, core, feat_dim=768):
         super().__init__()
         self.core = core
+        feat_dim = core.backbone.channels[-1] if hasattr(core.backbone, "channels") else feat_dim
         self.gate = nn.Linear(feat_dim, 1)
         self._f = None
         core.backbone.register_forward_hook(self._grab)          # bound method: survives copy.deepcopy (EMA)

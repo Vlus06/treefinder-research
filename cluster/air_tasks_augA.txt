@@ -1,0 +1,19 @@
+res_state_CO.yaml convnext_upernet none 2025 9280 --tag smoke --max_samples 64 --epochs 5 --workers 2 --photo --photo_parts gain --photo_scale 2
+res_state_CO.yaml convnext_upernet none 2025 9300 --tag co_p_gain --photo --photo_parts gain
+res_state_CO.yaml convnext_upernet none 2024 9301 --tag co_p_gain --photo --photo_parts gain
+res_state_CO.yaml convnext_upernet none 2023 9302 --tag co_p_gain --photo --photo_parts gain
+res_state_CO.yaml convnext_upernet none 2025 9303 --tag co_p_bias --photo --photo_parts bias
+res_state_CO.yaml convnext_upernet none 2024 9304 --tag co_p_bias --photo --photo_parts bias
+res_state_CO.yaml convnext_upernet none 2023 9305 --tag co_p_bias --photo --photo_parts bias
+res_state_CO.yaml convnext_upernet none 2025 9306 --tag co_p_gamma --photo --photo_parts gamma
+res_state_CO.yaml convnext_upernet none 2024 9307 --tag co_p_gamma --photo --photo_parts gamma
+res_state_CO.yaml convnext_upernet none 2023 9308 --tag co_p_gamma --photo --photo_parts gamma
+res_state_CO.yaml convnext_upernet none 2025 9309 --tag co_p_nir --photo --photo_parts nir
+res_state_CO.yaml convnext_upernet none 2024 9310 --tag co_p_nir --photo --photo_parts nir
+res_state_CO.yaml convnext_upernet none 2023 9311 --tag co_p_nir --photo --photo_parts nir
+res_state_CO.yaml convnext_upernet none 2025 9312 --tag co_p_s2 --photo --photo_scale 2.0
+res_state_CO.yaml convnext_upernet none 2024 9313 --tag co_p_s2 --photo --photo_scale 2.0
+res_state_CO.yaml convnext_upernet none 2023 9314 --tag co_p_s2 --photo --photo_scale 2.0
+res_state_CO.yaml convnext_upernet none 2025 9315 --tag co_p_s05 --photo --photo_scale 0.5
+res_state_CO.yaml convnext_upernet none 2024 9316 --tag co_p_s05 --photo --photo_scale 0.5
+res_state_CO.yaml convnext_upernet none 2023 9317 --tag co_p_s05 --photo --photo_scale 0.5

@@ -1,0 +1,14 @@
+res_state_CO.yaml dinov2_s none 2025 9554 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_l none 2025 9555 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --lr_backbone_mult 0.1 --bs 8
+res_state_CO.yaml dinov2_s none 2025 9620 --tag co_dinoS_plain --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_s none 2024 9621 --tag co_dinoS_plain --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_s none 2023 9622 --tag co_dinoS_plain --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_s none 2025 9623 --tag co_dinoS_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_s none 2024 9624 --tag co_dinoS_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_s none 2023 9625 --tag co_dinoS_method --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_l none 2025 9626 --tag co_dinoL_plain --lr_backbone_mult 0.1 --bs 16
+res_state_CO.yaml dinov2_l none 2024 9627 --tag co_dinoL_plain --lr_backbone_mult 0.1 --bs 16
+res_state_CO.yaml dinov2_l none 2023 9628 --tag co_dinoL_plain --lr_backbone_mult 0.1 --bs 16
+res_state_CO.yaml dinov2_l none 2025 9629 --tag co_dinoL_method --bank src --cons 1.0 --lr_backbone_mult 0.1 --bs 16
+res_state_CO.yaml dinov2_l none 2024 9630 --tag co_dinoL_method --bank src --cons 1.0 --lr_backbone_mult 0.1 --bs 16
+res_state_CO.yaml dinov2_l none 2023 9631 --tag co_dinoL_method --bank src --cons 1.0 --lr_backbone_mult 0.1 --bs 16

@@ -1,0 +1,7 @@
+res_random.yaml dinov2_b none 2025 9551 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --split_seed 2025 --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 2025 9572 --tag tile_dino_plain --split_seed 2025 --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 1 9573 --tag tile_dino_plain --split_seed 2025 --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 2 9574 --tag tile_dino_plain --split_seed 2025 --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 2025 9575 --tag tile_dino_method --bank src --cons 1.0 --split_seed 2025 --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 1 9576 --tag tile_dino_method --bank src --cons 1.0 --split_seed 2025 --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 2 9577 --tag tile_dino_method --bank src --cons 1.0 --split_seed 2025 --lr_backbone_mult 0.1

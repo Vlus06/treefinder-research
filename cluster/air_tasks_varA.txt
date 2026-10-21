@@ -1,0 +1,17 @@
+res_state_CO.yaml convnext_upernet none 2025 9470 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --cons_type bce
+res_state_CO.yaml convnext_upernet none 2025 9471 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --fcons 1.0
+res_state_CO.yaml convnext_upernet none 2025 9500 --tag v_cons05 --bank src --cons 0.5
+res_state_CO.yaml convnext_upernet none 2024 9501 --tag v_cons05 --bank src --cons 0.5
+res_state_CO.yaml convnext_upernet none 2023 9502 --tag v_cons05 --bank src --cons 0.5
+res_state_CO.yaml convnext_upernet none 2025 9503 --tag v_cons2 --bank src --cons 2.0
+res_state_CO.yaml convnext_upernet none 2024 9504 --tag v_cons2 --bank src --cons 2.0
+res_state_CO.yaml convnext_upernet none 2023 9505 --tag v_cons2 --bank src --cons 2.0
+res_state_CO.yaml convnext_upernet none 2025 9506 --tag v_cons_bce --bank src --cons 1.0 --cons_type bce
+res_state_CO.yaml convnext_upernet none 2024 9507 --tag v_cons_bce --bank src --cons 1.0 --cons_type bce
+res_state_CO.yaml convnext_upernet none 2023 9508 --tag v_cons_bce --bank src --cons 1.0 --cons_type bce
+res_state_CO.yaml convnext_upernet none 2025 9509 --tag v_cons_logit --bank src --cons 1.0 --cons_type logit
+res_state_CO.yaml convnext_upernet none 2024 9510 --tag v_cons_logit --bank src --cons 1.0 --cons_type logit
+res_state_CO.yaml convnext_upernet none 2023 9511 --tag v_cons_logit --bank src --cons 1.0 --cons_type logit
+res_state_CO.yaml convnext_upernet none 2025 9512 --tag v_fcons --bank src --cons 1.0 --fcons 1.0
+res_state_CO.yaml convnext_upernet none 2024 9513 --tag v_fcons --bank src --cons 1.0 --fcons 1.0
+res_state_CO.yaml convnext_upernet none 2023 9514 --tag v_fcons --bank src --cons 1.0 --fcons 1.0

@@ -1,0 +1,12 @@
+res_random.yaml m_regy4_upernet none 2025 9877 --tag fix_regy4_upernet --split_seed 2025
+res_random.yaml m_regy4_upernet none 1 9878 --tag fix_regy4_upernet --split_seed 2025
+res_random.yaml m_regy4_upernet none 2 9879 --tag fix_regy4_upernet --split_seed 2025
+res_random.yaml m_cnx2b_upernet none 2025 9880 --tag fix_cnx2b_upernet --split_seed 2025
+res_random.yaml m_cnx2b_upernet none 1 9881 --tag fix_cnx2b_upernet --split_seed 2025
+res_random.yaml m_cnx2b_upernet none 2 9882 --tag fix_cnx2b_upernet --split_seed 2025
+res_random.yaml m_cnx2b_fpn none 2025 9883 --tag fix_cnx2b_fpn --split_seed 2025
+res_random.yaml m_cnx2b_fpn none 1 9884 --tag fix_cnx2b_fpn --split_seed 2025
+res_random.yaml m_cnx2b_fpn none 2 9885 --tag fix_cnx2b_fpn --split_seed 2025
+res_random.yaml convnext_b_upernet none 2025 9886 --tag fix_cnxb_upernet --split_seed 2025
+res_random.yaml convnext_b_upernet none 1 9887 --tag fix_cnxb_upernet --split_seed 2025
+res_random.yaml convnext_b_upernet none 2 9888 --tag fix_cnxb_upernet --split_seed 2025
