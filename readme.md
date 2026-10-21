@@ -93,6 +93,40 @@ region sees only a few acquisition conditions. During training every source tile
 of a **bank built from the training tiles only** (per-pixel colour transfer, NDVI recomputed, labels unchanged), and the prediction on the
 restyled tile is asked to match the (detached) prediction on the original tile. Nothing is used from the target domain; inference is unchanged.
 
+**Training (the source region only; nothing from the target region is used)**
+
+```mermaid
+flowchart LR
+    T["Source tile<br/>R, G, B, NIR, NDVI"] --> C["Clean view"]
+    T --> S["Restyle with a random bank entry<br/>per-band mean/std colour transfer<br/>NDVI recomputed, labels unchanged"]
+    BANK[("Statistics bank<br/>8 numbers per training tile:<br/>mean and std of R, G, B, NIR")] -.-> S
+    C --> M1["DINOv2 segmenter"]
+    S --> M2["DINOv2 segmenter<br/>(same weights)"]
+    M1 -->|"p_clean, stop-gradient"| LC
+    M2 -->|"p_restyled"| LC["Consistency loss<br/>(p_restyled - p_clean)^2"]
+    M2 --> LM["Mask loss<br/>BCE + Dice vs dead-tree labels"]
+    LC --> L["Total loss = mask + lambda x consistency"]
+    LM --> L
+```
+
+**Inference** is the plain network (no restyling, no extra cost): tile -> DINOv2 segmenter -> dead-tree probability map (threshold 0.5).
+
+**Network (`dinov2_b` in `air/models_extra.py`)**
+
+```mermaid
+flowchart TB
+    X["Input tile 224 x 224 x 5<br/>R, G, B, NIR, NDVI"] --> UP["Bilinear up-sampling x2 (448 x 448)<br/>RGB normalised with ImageNet statistics"]
+    UP --> PE["Patch embedding 14 x 14<br/>(first conv widened from 3 to 5 channels)"]
+    PE --> VIT["DINOv2-B ViT, 12 layers, encoder lr x 0.1"]
+    VIT -->|"hidden states of layers 3, 6, 9, 12<br/>(32 x 32 tokens each)"| PROJ["1x1 conv + norm + act per level<br/>768 -> 128 channels"]
+    PROJ --> CAT["Concatenate 4 levels (512 ch)"]
+    CAT --> F1["3x3 conv, 192 ch"]
+    F1 --> U1["Up x2 + 3x3 conv, 96 ch"]
+    U1 --> U2["Up x2 + 3x3 conv, 48 ch"]
+    U2 --> H["1x1 conv, 1 channel"]
+    H --> R["Resize to 224 x 224 -> dead-tree logit map"]
+```
+
 ```bash
 # 1) once: per-tile band statistics (no labels are read)
 python research/tile_band_stats.py --info datasets/tile_info224_v3_aux.csv --tiles datasets/tiles224_v3 --out datasets/tile_band_stats.csv
