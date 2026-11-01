@@ -203,6 +203,8 @@ def main():
     ap.add_argument("--bank_gen", type=float, default=0.0, help="sample bank statistics from a Gaussian fitted to the bank, covariance scaled by this factor")
     ap.add_argument("--bank_indep", action="store_true", help="independent bank tile for every band")
     ap.add_argument("--bank_p", type=float, default=1.0)
+    ap.add_argument("--bank_bg", action="store_true", help="statistics of the bank tiles and of the restyled tile computed on non-dead pixels only")
+    ap.add_argument("--bank_hard", type=int, default=1, help="K>1: draw K restyles per tile and train on the one with the largest loss (hardest style of the bank)")
     ap.add_argument("--rel", action="store_true", help="append two tile-relative channels (NDVI / brightness minus local mean)")
     ap.add_argument("--mixstyle", type=float, default=0.0, help="probability of feature-level MixStyle after encoder stages 1 and 2 (DG baseline)")
     ap.add_argument("--bs", type=int, default=0, help="override the batch size of the config")
@@ -266,15 +268,15 @@ def main():
     if a.bank:
         from air.spectral_aug import StatBank
         keep = [os.path.basename(p) for p in train_ds.base.paths] if a.bank == "src" else None
-        bank = StatBank(os.path.join(cfg["data"]["root_dir"], "tile_band_stats.csv"), keep, device, lam=a.bank_lam, beta=a.bank_beta,
-                        indep=a.bank_indep, gen=a.bank_gen, p=a.bank_p)
+        bank = StatBank(os.path.join(cfg["data"]["root_dir"], "tile_band_stats_bg.csv" if a.bank_bg else "tile_band_stats.csv"), keep, device,
+                        lam=a.bank_lam, beta=a.bank_beta, indep=a.bank_indep, gen=a.bank_gen, p=a.bank_p, bg=a.bank_bg)
         log.info("statistics bank (%s): %d tiles", a.bank, len(bank))
     parts = tuple(p for p in a.photo_parts.split(",") if p)
     default_photo = parts == ("gain", "bias", "gamma") and a.photo_scale == 1.0
 
-    def augment(x):
+    def augment(x, y=None):
         if bank is not None:
-            x = bank(x)
+            x = bank(x, y)
         if a.photo:
             x = photometric(x) if default_photo else __import__("air.spectral_aug", fromlist=["x"]).photometric_parts(x, parts, a.photo_scale)
         if a.fda > 0:
@@ -282,8 +284,8 @@ def main():
             x = fda_aug(x, a.fda)
         return x
 
-    def augment_p(x):
-        xa = augment(x)
+    def augment_p(x, y=None):
+        xa = augment(x, y)
         if a.aug_p >= 1.0:
             return xa
         m = (torch.rand(x.shape[0], 1, 1, 1, device=x.device) < a.aug_p).float()
@@ -296,8 +298,22 @@ def main():
     if a.mixstyle > 0:
         from air.spectral_aug import MixStyle
         ms = MixStyle(a.mixstyle)
-        for idx in (1, 3):                                  # outputs of the first two ConvNeXt stages
-            base.backbone.features[idx].register_forward_hook(lambda m, i, o: ms(o) if m.training else o)
+        if hasattr(base, "vit"):                            # DINOv2: MixStyle on the token grid after the first two Transformer blocks
+            def vit_mix(m, i, o):
+                if not m.training:
+                    return o
+                hs = o[0] if isinstance(o, tuple) else o
+                cls_tok, tok = hs[:, :1], hs[:, 1:]
+                b, n, c = tok.shape
+                g = int(round(n ** 0.5))
+                f = ms(tok.transpose(1, 2).reshape(b, c, g, g))
+                hs = torch.cat([cls_tok, f.reshape(b, c, n).transpose(1, 2)], 1)
+                return (hs,) + tuple(o[1:]) if isinstance(o, tuple) else hs
+            for idx in (0, 1):
+                base.vit.encoder.layer[idx].register_forward_hook(vit_mix)
+        else:
+            for idx in (1, 3):                              # outputs of the first two ConvNeXt stages
+                base.backbone.features[idx].register_forward_hook(lambda m, i, o: ms(o) if m.training else o)
     assert a.selfdistill == 0 or a.ema > 0, "--selfdistill needs --ema"
     assert a.st == 0 or a.ema > 0, "--st needs --ema (the EMA model is the pseudo-labeller)"
     st_iter = None
@@ -354,8 +370,24 @@ def main():
                 from air.distill import copy_paste
                 x, y, valid = copy_paste(x, y, valid, prob=a.copypaste)
             x_clean = x                                      # teachers see the clean tile, the student the augmented one
-            if use_aug:
-                x = augment_p(x)
+            if use_aug and a.bank_hard > 1 and bank is not None:
+                model.eval()
+                with torch.no_grad(), torch.autocast("cuda", dtype=torch.bfloat16, enabled=device.type == "cuda"):
+                    cands = [augment_p(x_clean, y) for _ in range(a.bank_hard)]
+                    sc = []
+                    for xk in cands:
+                        ok = model(xk)
+                        lk = (ok[0] if isinstance(ok, (tuple, list)) else ok).float()
+                        pk = torch.sigmoid(lk) * valid
+                        tk = y * valid
+                        l_bce = (bce(lk, y) * valid).flatten(1).sum(1) / valid.flatten(1).sum(1).clamp_min(1)
+                        l_dice = 1 - ((pk * tk).flatten(1).sum(1) + 1e-6) / (pk.flatten(1).sum(1) + tk.flatten(1).sum(1) + 1e-6)
+                        sc.append(l_bce + l_dice)
+                    pick = torch.stack(sc).argmax(0)
+                    x = torch.stack(cands)[pick, torch.arange(x_clean.shape[0], device=device)]
+                model.train()
+            elif use_aug:
+                x = augment_p(x, y)
             soft = None
             if teachers or a.selfdistill > 0:
                 with torch.no_grad(), torch.autocast("cuda", dtype=torch.bfloat16, enabled=device.type == "cuda"):
@@ -379,7 +411,7 @@ def main():
             if a.views > 1 and use_aug:                       # extra independently augmented views
                 for _ in range(a.views - 1):
                     with torch.autocast("cuda", dtype=torch.bfloat16, enabled=device.type == "cuda"):
-                        ov = model(augment_p(x_clean))
+                        ov = model(augment_p(x_clean, y))
                     outs_v.append((ov[0] if isinstance(ov, (tuple, list)) else ov).float())
             if a.vrex > 0 and len(y) % 8 == 0:
                 per = len(y) // 8                       # sampler yields 8 consecutive groups of `per` tiles

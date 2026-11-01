@@ -50,13 +50,13 @@ class StatBank:
     p     : probability that a sample is restyled at all
     """
 
-    def __init__(self, csv_path, keep_files=None, device="cpu", lam="u", beta=0.1, indep=False, gen=0.0, p=1.0):
+    def __init__(self, csv_path, keep_files=None, device="cpu", lam="u", beta=0.1, indep=False, gen=0.0, p=1.0, bg=False):
         df = pd.read_csv(csv_path)
         if keep_files is not None:
             df = df[df.FileName.isin(set(keep_files))]
         cols = [f"m{i}" for i in range(4)] + [f"s{i}" for i in range(4)]
         self.t = torch.tensor(df[cols].values, dtype=torch.float32, device=device)
-        self.lam, self.beta, self.indep, self.gen, self.p = lam, beta, indep, gen, p
+        self.lam, self.beta, self.indep, self.gen, self.p, self.bg = lam, beta, indep, gen, p, bg
         mu = self.t.mean(0)
         cov = torch.cov(self.t.T) + 1e-6 * torch.eye(8, device=device)
         self.mu, self.chol = mu, torch.linalg.cholesky(cov)
@@ -77,13 +77,18 @@ class StatBank:
             pick = self.t[torch.randint(0, len(self.t), (b,), device=dev)]
         return pick[:, :4].reshape(b, 4, 1, 1), pick[:, 4:].reshape(b, 4, 1, 1)
 
-    def __call__(self, x):
+    def __call__(self, x, y=None):
         b, dev = x.shape[0], x.device
         valid = _valid(x)
         v = x[:, :4]
-        n = valid.sum((2, 3), keepdim=True).clamp_min(1)
-        mu = (v * valid).sum((2, 3), keepdim=True) / n
-        sd = ((((v - mu) ** 2) * valid).sum((2, 3), keepdim=True) / n).sqrt()
+        vs = valid
+        if self.bg and y is not None:                          # tile statistics on the non-dead pixels only (content-independent style)
+            vs = valid * (1 - (y == 1).float())
+            small = (vs.sum((2, 3), keepdim=True) < 50).float()
+            vs = small * valid + (1 - small) * vs
+        n = vs.sum((2, 3), keepdim=True).clamp_min(1)
+        mu = (v * vs).sum((2, 3), keepdim=True) / n
+        sd = ((((v - mu) ** 2) * vs).sum((2, 3), keepdim=True) / n).sqrt()
         mb, sb = self._stats(b, dev)
         if self.lam == "beta":
             lam = torch.distributions.Beta(self.beta, self.beta).sample((b, 1, 1, 1)).to(dev)

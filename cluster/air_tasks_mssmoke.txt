@@ -1,0 +1,1 @@
+res_state_CO.yaml dinov2_b none 2025 10399 --tag smoke --max_samples 64 --epochs 2 --workers 2 --lr_backbone_mult 0.01 --mixstyle 0.5

@@ -1,0 +1,6 @@
+res_state_EW.yaml convnext_upernet none 2025 10409 --tag ew_mixstyle --mixstyle 0.5
+res_state_EW.yaml convnext_upernet none 2024 10410 --tag ew_mixstyle --mixstyle 0.5
+res_state_EW.yaml convnext_upernet none 2023 10411 --tag ew_mixstyle --mixstyle 0.5
+res_state_WE.yaml convnext_upernet none 2025 10412 --tag we_mixstyle --mixstyle 0.5
+res_state_WE.yaml convnext_upernet none 2024 10413 --tag we_mixstyle --mixstyle 0.5
+res_state_WE.yaml convnext_upernet none 2023 10414 --tag we_mixstyle --mixstyle 0.5

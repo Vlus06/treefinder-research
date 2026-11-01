@@ -1,0 +1,10 @@
+res_state_CO.yaml dinov2_b none 2025 10399 --tag smoke --max_samples 64 --epochs 2 --workers 2 --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_CO.yaml dinov2_b none 2025 10400 --tag co_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_CO.yaml dinov2_b none 2024 10401 --tag co_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_CO.yaml dinov2_b none 2023 10402 --tag co_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_EW.yaml dinov2_b none 2025 10403 --tag ew_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_EW.yaml dinov2_b none 2024 10404 --tag ew_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_EW.yaml dinov2_b none 2023 10405 --tag ew_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_WE.yaml dinov2_b none 2025 10406 --tag we_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_WE.yaml dinov2_b none 2024 10407 --tag we_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
+res_state_WE.yaml dinov2_b none 2023 10408 --tag we_lr001_ms --lr_backbone_mult 0.01 --mixstyle 0.5
