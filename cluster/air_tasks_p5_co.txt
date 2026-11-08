@@ -1,0 +1,3 @@
+res_state_CO.yaml dinov2_b none 2025 12001 --tag co_fz001_p5 --bank src --cons 1.0 --lr_backbone_mult 0.01 --patience 5
+res_state_CO.yaml dinov2_b none 2024 12002 --tag co_fz001_p5 --bank src --cons 1.0 --lr_backbone_mult 0.01 --patience 5
+res_state_CO.yaml dinov2_b none 2023 12003 --tag co_fz001_p5 --bank src --cons 1.0 --lr_backbone_mult 0.01 --patience 5

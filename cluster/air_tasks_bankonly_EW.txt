@@ -1,0 +1,3 @@
+res_state_EW.yaml dinov2_b none 2025 12104 --tag ew_lr001_bank --bank src --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b none 2024 12105 --tag ew_lr001_bank --bank src --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b none 2023 12106 --tag ew_lr001_bank --bank src --lr_backbone_mult 0.01

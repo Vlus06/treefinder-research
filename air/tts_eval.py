@@ -70,6 +70,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--tags", nargs="*", default=None, help="only runs whose tag is in this list")
+    ap.add_argument("--models", nargs="+", default=["convnext_upernet"], help="model names to evaluate (e.g. dinov2_b)")
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     res = json.load(open(a.out)) if os.path.exists(a.out) else {}
@@ -84,7 +85,7 @@ def main():
         if not m or "Combined metrics" not in t:
             continue
         g = ast.literal_eval(m.group(1))
-        if Path(g["config"]).stem != a.config_name or g["model"] not in ("convnext_upernet",) or g.get("ctx") or g.get("gate") or g.get("rel") \
+        if Path(g["config"]).stem != a.config_name or g["model"] not in a.models or g.get("ctx") or g.get("gate") or g.get("rel") \
                 or g.get("up", 1.0) != 1.0 or g.get("max_samples") or g.get("tag", "") == "smoke":
             continue
         if a.tags is not None and g.get("tag", "") not in a.tags:

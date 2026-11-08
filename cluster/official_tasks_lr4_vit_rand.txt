@@ -1,0 +1,3 @@
+code_head_vit res_random_lr4_minep.yaml 3840 vitseg3 2025
+code_head_vit res_random_lr4_minep.yaml 3841 vitseg3 2024
+code_head_vit res_random_lr4_minep.yaml 3842 vitseg3 2023

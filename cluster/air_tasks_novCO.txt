@@ -1,0 +1,34 @@
+res_state_CO.yaml dinov2_b_lora none 2025 9990 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0
+res_state_CO.yaml dinov2_b_film none 2025 9991 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0
+res_state_CO.yaml dinov2_b_lora_film none 2025 9992 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0
+res_state_CO.yaml dinov2_b none 2025 9993 --tag smoke --max_samples 64 --epochs 5 --workers 2 --bank src --cons 1.0 --lr_backbone_mult 0.0 --up 1.5 --bs 16
+res_state_CO.yaml dinov2_b none 2025 10000 --tag co_fz0 --bank src --cons 1.0 --lr_backbone_mult 0.0
+res_state_CO.yaml dinov2_b none 2024 10001 --tag co_fz0 --bank src --cons 1.0 --lr_backbone_mult 0.0
+res_state_CO.yaml dinov2_b none 2023 10002 --tag co_fz0 --bank src --cons 1.0 --lr_backbone_mult 0.0
+res_state_CO.yaml dinov2_b none 2025 10003 --tag co_fz001 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_state_CO.yaml dinov2_b none 2024 10004 --tag co_fz001 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_state_CO.yaml dinov2_b none 2023 10005 --tag co_fz001 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_state_CO.yaml dinov2_b none 2025 10006 --tag co_fz003 --bank src --cons 1.0 --lr_backbone_mult 0.03
+res_state_CO.yaml dinov2_b none 2024 10007 --tag co_fz003 --bank src --cons 1.0 --lr_backbone_mult 0.03
+res_state_CO.yaml dinov2_b none 2023 10008 --tag co_fz003 --bank src --cons 1.0 --lr_backbone_mult 0.03
+res_state_CO.yaml dinov2_b_lora none 2025 10009 --tag co_lora_m --bank src --cons 1.0
+res_state_CO.yaml dinov2_b_lora none 2024 10010 --tag co_lora_m --bank src --cons 1.0
+res_state_CO.yaml dinov2_b_lora none 2023 10011 --tag co_lora_m --bank src --cons 1.0
+res_state_CO.yaml dinov2_b_lora none 2025 10012 --tag co_lora_p
+res_state_CO.yaml dinov2_b_lora none 2024 10013 --tag co_lora_p
+res_state_CO.yaml dinov2_b_lora none 2023 10014 --tag co_lora_p
+res_state_CO.yaml dinov2_b_film none 2025 10015 --tag co_film_m --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b_film none 2024 10016 --tag co_film_m --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b_film none 2023 10017 --tag co_film_m --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b_film none 2025 10018 --tag co_film_p --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b_film none 2024 10019 --tag co_film_p --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b_film none 2023 10020 --tag co_film_p --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b_lora_film none 2025 10021 --tag co_lf_m --bank src --cons 1.0
+res_state_CO.yaml dinov2_b_lora_film none 2024 10022 --tag co_lf_m --bank src --cons 1.0
+res_state_CO.yaml dinov2_b_lora_film none 2023 10023 --tag co_lf_m --bank src --cons 1.0
+res_state_CO.yaml dinov2_b none 2025 10024 --tag co_res3_p --up 1.5 --bs 16 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 10025 --tag co_res3_p --up 1.5 --bs 16 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 10026 --tag co_res3_p --up 1.5 --bs 16 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2025 10027 --tag co_res3_m --bank src --cons 1.0 --up 1.5 --bs 16 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2024 10028 --tag co_res3_m --bank src --cons 1.0 --up 1.5 --bs 16 --lr_backbone_mult 0.1
+res_state_CO.yaml dinov2_b none 2023 10029 --tag co_res3_m --bank src --cons 1.0 --up 1.5 --bs 16 --lr_backbone_mult 0.1

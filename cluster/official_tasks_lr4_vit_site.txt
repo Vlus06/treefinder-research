@@ -1,0 +1,3 @@
+code_site_vit res_random_site_fix_lr4_minep.yaml 3843 vitseg3 2025
+code_site_vit res_random_site_fix_lr4_minep.yaml 3844 vitseg3 2024
+code_site_vit res_random_site_fix_lr4_minep.yaml 3845 vitseg3 2023

@@ -1,0 +1,12 @@
+res_state_WE.yaml dinov2_b_lora none 2025 10060 --tag we_lora_m --bank src --cons 1.0
+res_state_WE.yaml dinov2_b_lora none 2024 10061 --tag we_lora_m --bank src --cons 1.0
+res_state_WE.yaml dinov2_b_lora none 2023 10062 --tag we_lora_m --bank src --cons 1.0
+res_state_WE.yaml dinov2_b_lora none 2025 10063 --tag we_lora_p
+res_state_WE.yaml dinov2_b_lora none 2024 10064 --tag we_lora_p
+res_state_WE.yaml dinov2_b_lora none 2023 10065 --tag we_lora_p
+res_state_WE.yaml dinov2_b_film none 2025 10066 --tag we_film_m --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_WE.yaml dinov2_b_film none 2024 10067 --tag we_film_m --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_WE.yaml dinov2_b_film none 2023 10068 --tag we_film_m --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_state_WE.yaml dinov2_b_lora_film none 2025 10069 --tag we_lf_m --bank src --cons 1.0
+res_state_WE.yaml dinov2_b_lora_film none 2024 10070 --tag we_lf_m --bank src --cons 1.0
+res_state_WE.yaml dinov2_b_lora_film none 2023 10071 --tag we_lf_m --bank src --cons 1.0

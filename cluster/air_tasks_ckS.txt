@@ -1,0 +1,3 @@
+res_random_site.yaml dinov2_b none 2025 10483 --tag site_lr001_p_ck --split_seed 2025 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b none 2024 10484 --tag site_lr001_p_ck --split_seed 2025 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b none 2023 10485 --tag site_lr001_p_ck --split_seed 2025 --lr_backbone_mult 0.01

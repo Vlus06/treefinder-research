@@ -1,0 +1,6 @@
+res_state_WE.yaml dinov2_b_dpt none 2025 10316 --tag we_dpt_lr001 --lr_backbone_mult 0.01
+res_state_WE.yaml dinov2_b_dpt none 2024 10317 --tag we_dpt_lr001 --lr_backbone_mult 0.01
+res_state_WE.yaml dinov2_b_dpt none 2023 10318 --tag we_dpt_lr001 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b_dpt none 2025 10319 --tag site_dpt_lr001 --split_seed 2025 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b_dpt none 2024 10320 --tag site_dpt_lr001 --split_seed 2025 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b_dpt none 2023 10321 --tag site_dpt_lr001 --split_seed 2025 --lr_backbone_mult 0.01

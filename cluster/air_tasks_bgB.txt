@@ -1,0 +1,9 @@
+res_state_CO.yaml convnext_upernet none 2025 10430 --tag co_cnx_bg --bank src --bank_bg --cons 1.0
+res_state_CO.yaml convnext_upernet none 2024 10431 --tag co_cnx_bg --bank src --bank_bg --cons 1.0
+res_state_CO.yaml convnext_upernet none 2023 10432 --tag co_cnx_bg --bank src --bank_bg --cons 1.0
+res_state_EW.yaml convnext_upernet none 2025 10433 --tag ew_cnx_bg --bank src --bank_bg --cons 1.0
+res_state_EW.yaml convnext_upernet none 2024 10434 --tag ew_cnx_bg --bank src --bank_bg --cons 1.0
+res_state_EW.yaml convnext_upernet none 2023 10435 --tag ew_cnx_bg --bank src --bank_bg --cons 1.0
+res_state_WE.yaml convnext_upernet none 2025 10436 --tag we_cnx_bg --bank src --bank_bg --cons 1.0
+res_state_WE.yaml convnext_upernet none 2024 10437 --tag we_cnx_bg --bank src --bank_bg --cons 1.0
+res_state_WE.yaml convnext_upernet none 2023 10438 --tag we_cnx_bg --bank src --bank_bg --cons 1.0

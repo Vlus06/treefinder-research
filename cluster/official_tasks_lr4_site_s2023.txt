@@ -1,0 +1,6 @@
+code_site res_random_site_fix_lr4.yaml 3830 unet 2023
+code_site res_random_site_fix_lr4.yaml 3831 deeplabv3 2023
+code_site res_random_site_fix_lr4.yaml 3832 vitseg3 2023
+code_site res_random_site_fix_lr4.yaml 3833 segformer_large3 2023
+code_site res_random_site_fix_lr4.yaml 3834 mask2former 2023
+code_site res_random_site_fix_lr4.yaml 3835 dofa 2023

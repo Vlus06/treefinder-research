@@ -1,0 +1,6 @@
+res_state_EW.yaml dinov2_b none 2025 10156 --tag ew_lr001_photo --photo --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b none 2024 10157 --tag ew_lr001_photo --photo --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b none 2023 10158 --tag ew_lr001_photo --photo --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b none 2025 10159 --tag ew_lr001_bank --bank src --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b none 2024 10160 --tag ew_lr001_bank --bank src --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b none 2023 10161 --tag ew_lr001_bank --bank src --lr_backbone_mult 0.01

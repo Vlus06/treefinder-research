@@ -1,0 +1,6 @@
+code_head res_random_lr4.yaml 3812 unet 2023
+code_head res_random_lr4.yaml 3813 deeplabv3 2023
+code_head res_random_lr4.yaml 3814 vitseg3 2023
+code_head res_random_lr4.yaml 3815 segformer_large3 2023
+code_head res_random_lr4.yaml 3816 mask2former 2023
+code_head res_random_lr4.yaml 3817 dofa 2023

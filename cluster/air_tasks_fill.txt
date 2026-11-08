@@ -1,0 +1,6 @@
+res_random_site.yaml convnext_upernet none 2025 10200 --tag site_cnx_method --split_seed 2025 --bank src --cons 1.0
+res_random_site.yaml convnext_upernet none 2024 10201 --tag site_cnx_method --split_seed 2025 --bank src --cons 1.0
+res_random_site.yaml convnext_upernet none 2023 10202 --tag site_cnx_method --split_seed 2025 --bank src --cons 1.0
+res_random.yaml dinov2_b none 2025 10203 --tag tile3_dino_fz001 --split_seed 2025 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_random.yaml dinov2_b none 2024 10204 --tag tile3_dino_fz001 --split_seed 2025 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_random.yaml dinov2_b none 2023 10205 --tag tile3_dino_fz001 --split_seed 2025 --bank src --cons 1.0 --lr_backbone_mult 0.01

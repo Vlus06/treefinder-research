@@ -14,7 +14,7 @@ class SiteSplitDataset(Dataset):
     def __init__(self, cfg: dict, split: str = 'train'):
         self.cfg = cfg
         self.split = split
-        seed = cfg['experiment']['seed']
+        seed = cfg['data']['split'].get('site_seed', cfg['experiment']['seed'])  # site_seed fixes the partition while the training seed varies
         manifest = cfg['data']['split'].get('site_manifest_dir', 'research/splits')
         df = pd.read_csv(os.path.join(manifest, f'site_seed{seed}.csv'), usecols=['FileName', 'split'])
         df = df[df['split'] == split]

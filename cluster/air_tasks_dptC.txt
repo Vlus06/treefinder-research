@@ -1,0 +1,3 @@
+res_random.yaml dinov2_b_dpt none 2025 10322 --tag tile3_dpt_lr001 --split_seed 2025 --lr_backbone_mult 0.01
+res_random.yaml dinov2_b_dpt none 2024 10323 --tag tile3_dpt_lr001 --split_seed 2025 --lr_backbone_mult 0.01
+res_random.yaml dinov2_b_dpt none 2023 10324 --tag tile3_dpt_lr001 --split_seed 2025 --lr_backbone_mult 0.01

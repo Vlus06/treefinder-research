@@ -1,0 +1,6 @@
+res_random_site.yaml dinov2_b none 2025 10130 --tag site_dino_fz001 --split_seed 2025 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b none 2024 10131 --tag site_dino_fz001 --split_seed 2025 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b none 2023 10132 --tag site_dino_fz001 --split_seed 2025 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b none 2025 10133 --tag site_dino_lr001_p --split_seed 2025 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b none 2024 10134 --tag site_dino_lr001_p --split_seed 2025 --lr_backbone_mult 0.01
+res_random_site.yaml dinov2_b none 2023 10135 --tag site_dino_lr001_p --split_seed 2025 --lr_backbone_mult 0.01

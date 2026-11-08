@@ -1,0 +1,2 @@
+res_random.yaml dinov2_b none 2023 9703 --tag tile3_dino_method --split_seed 2025 --bank src --cons 1.0 --lr_backbone_mult 0.1
+res_random.yaml dinov2_b none 2024 9702 --tag tile3_dino_method --split_seed 2025 --bank src --cons 1.0 --lr_backbone_mult 0.1

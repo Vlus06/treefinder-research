@@ -1,0 +1,12 @@
+res_state_EW.yaml upernet_swin_s none 2025 10460 --tag ew_swin_plain
+res_state_EW.yaml upernet_swin_s none 2024 10461 --tag ew_swin_plain
+res_state_EW.yaml upernet_swin_s none 2023 10462 --tag ew_swin_plain
+res_state_WE.yaml upernet_swin_s none 2025 10463 --tag we_swin_plain
+res_state_WE.yaml upernet_swin_s none 2024 10464 --tag we_swin_plain
+res_state_WE.yaml upernet_swin_s none 2023 10465 --tag we_swin_plain
+res_state_EW.yaml upernet_swin_s none 2025 10466 --tag ew_swin_method --bank src --cons 1.0
+res_state_EW.yaml upernet_swin_s none 2024 10467 --tag ew_swin_method --bank src --cons 1.0
+res_state_EW.yaml upernet_swin_s none 2023 10468 --tag ew_swin_method --bank src --cons 1.0
+res_state_WE.yaml upernet_swin_s none 2025 10469 --tag we_swin_method --bank src --cons 1.0
+res_state_WE.yaml upernet_swin_s none 2024 10470 --tag we_swin_method --bank src --cons 1.0
+res_state_WE.yaml upernet_swin_s none 2023 10471 --tag we_swin_method --bank src --cons 1.0

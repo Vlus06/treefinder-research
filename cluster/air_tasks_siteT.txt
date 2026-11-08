@@ -1,0 +1,6 @@
+res_random_site.yaml treemortseg fixed 2025 10120 --tag site_tms_fixed --split_seed 2025 --w_edge 2.5 --w_dist 2.5
+res_random_site.yaml treemortseg fixed 2024 10121 --tag site_tms_fixed --split_seed 2025 --w_edge 2.5 --w_dist 2.5
+res_random_site.yaml treemortseg fixed 2023 10122 --tag site_tms_fixed --split_seed 2025 --w_edge 2.5 --w_dist 2.5
+res_random_site.yaml treemortseg none 2025 10123 --tag site_tms_none --split_seed 2025
+res_random_site.yaml treemortseg none 2024 10124 --tag site_tms_none --split_seed 2025
+res_random_site.yaml treemortseg none 2023 10125 --tag site_tms_none --split_seed 2025

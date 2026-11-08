@@ -1,0 +1,4 @@
+code_site res_random_site_fix.yaml 3657 dofa 2025
+code_site res_random_site_fix.yaml 3658 dofa 2024
+code_site res_random_site_fix.yaml 3646 deeplabv3 2024
+code_site res_random_site_fix.yaml 3649 vitseg3 2024

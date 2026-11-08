@@ -1,0 +1,6 @@
+code_site res_random_site_fix_lr4.yaml 3824 unet 2024
+code_site res_random_site_fix_lr4.yaml 3825 deeplabv3 2024
+code_site res_random_site_fix_lr4.yaml 3826 vitseg3 2024
+code_site res_random_site_fix_lr4.yaml 3827 segformer_large3 2024
+code_site res_random_site_fix_lr4.yaml 3828 mask2former 2024
+code_site res_random_site_fix_lr4.yaml 3829 dofa 2024

@@ -1,0 +1,9 @@
+res_state_WE.yaml dinov2_b none 2025 10051 --tag we_fz0 --bank src --cons 1.0 --lr_backbone_mult 0.0
+res_state_WE.yaml dinov2_b none 2024 10052 --tag we_fz0 --bank src --cons 1.0 --lr_backbone_mult 0.0
+res_state_WE.yaml dinov2_b none 2023 10053 --tag we_fz0 --bank src --cons 1.0 --lr_backbone_mult 0.0
+res_state_WE.yaml dinov2_b none 2025 10054 --tag we_fz001 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_state_WE.yaml dinov2_b none 2024 10055 --tag we_fz001 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_state_WE.yaml dinov2_b none 2023 10056 --tag we_fz001 --bank src --cons 1.0 --lr_backbone_mult 0.01
+res_state_WE.yaml dinov2_b none 2025 10057 --tag we_fz003 --bank src --cons 1.0 --lr_backbone_mult 0.03
+res_state_WE.yaml dinov2_b none 2024 10058 --tag we_fz003 --bank src --cons 1.0 --lr_backbone_mult 0.03
+res_state_WE.yaml dinov2_b none 2023 10059 --tag we_fz003 --bank src --cons 1.0 --lr_backbone_mult 0.03

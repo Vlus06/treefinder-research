@@ -1,0 +1,6 @@
+res_state_CO.yaml dinov2_b_dpt none 2025 10310 --tag co_dpt_lr001 --lr_backbone_mult 0.01
+res_state_CO.yaml dinov2_b_dpt none 2024 10311 --tag co_dpt_lr001 --lr_backbone_mult 0.01
+res_state_CO.yaml dinov2_b_dpt none 2023 10312 --tag co_dpt_lr001 --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b_dpt none 2025 10313 --tag ew_dpt_lr001 --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b_dpt none 2024 10314 --tag ew_dpt_lr001 --lr_backbone_mult 0.01
+res_state_EW.yaml dinov2_b_dpt none 2023 10315 --tag ew_dpt_lr001 --lr_backbone_mult 0.01
